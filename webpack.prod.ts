@@ -19,7 +19,10 @@ const config: Configuration = {
                 test: /\.tsx?$/,
                 exclude: '/node_modules/',
                 use: [{
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        presets: 'env'
+                    }
                 }, {
                     loader: 'awesome-typescript-loader',
                     options: {
