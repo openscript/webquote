@@ -1,0 +1,41 @@
+{
+  "name": "webquote",
+  "version": "0.0.1",
+  "description": "A little wizard to create quotes for web sites.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/openscript/webquote",
+  "author": "Robin Bühler",
+  "license": "MIT",
+  "scripts": {
+    "prod": "webpack --config webpack.prod.ts --profile",
+    "test": "tslint 'src/**/*.ts?(x)'",
+    "dev": "webpack-dev-server --config webpack.dev.ts --content-base dist/ --hot --progress"
+  },
+  "devDependencies": {
+    "tslint": "^5.8.0",
+    "tslint-react": "^3.2.0",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {
+    "@types/copy-webpack-plugin": "^4.0.1",
+    "@types/react": "^16.0.22",
+    "@types/react-dom": "^16.0.3",
+    "@types/webpack": "^3.8.1",
+    "awesome-typescript-loader": "^3.3.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.2.0",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.6.1",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "styled-components": "^2.2.3",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.1",
+    "typings-for-css-modules-loader": "^1.7.0",
+    "webpack": "^3.8.1"
+  }
+}
