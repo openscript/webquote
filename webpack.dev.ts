@@ -9,7 +9,7 @@ const config: Configuration = {
         path: path.join(__dirname, 'dist')
     },
 
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     devServer: {
         historyApiFallback: true
     },
