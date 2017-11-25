@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Section} from '../components/section';
 import {State} from '../models/state';
+import {ItemsList} from '../components/itemsList';
 
 interface Props {
     state: State;
@@ -18,7 +19,9 @@ export class Container extends React.Component<Props, {}> {
                             title={s.title}
                             description={s.description}
                             updateSection={this.updateFromSection}
-                        />
+                        >
+                            <ItemsList />
+                        </Section>
                     );
                 })}
             </div>
@@ -26,7 +29,7 @@ export class Container extends React.Component<Props, {}> {
     }
 
     private updateFromSection(value: number): void {
-        alert('f');
+        alert('updateFromSection');
     }
 }
 

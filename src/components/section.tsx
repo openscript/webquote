@@ -1,11 +1,13 @@
-import * as React from 'react';
-import {Total} from "./total";
 import {Card, CardHeader, CardText, Slider} from 'material-ui';
+import * as React from 'react';
+import {ReactNode} from 'react';
+import {Total} from './total';
 
 interface Props {
     title: string;
     description: string;
     updateSection: (value: number) => void;
+    children?: ReactNode;
 }
 
 interface State {
@@ -34,6 +36,7 @@ export class Section extends React.Component<Props, State> {
                 <CardText>
                     <Slider onChange={this.onSliderChange}/>
                     <Total value={this.state.sliderValue} />
+                    {this.props.children ? this.props.children : null}
                 </CardText>
             </Card>
         );
