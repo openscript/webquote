@@ -1,7 +1,11 @@
-import {Card, CardHeader, CardText, Slider} from 'material-ui';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui';
 import * as React from 'react';
 import {ReactNode} from 'react';
-import {Total} from './total';
+import styled from 'styled-components';
+
+const Description = styled.span`
+  font-weight: bold;
+`;
 
 interface Props {
     title: string;
@@ -31,11 +35,16 @@ export class Section extends React.Component<Props, State> {
 
     public render() {
         return (
-            <Card>
-                <CardHeader title={this.props.title} />
-                <CardText>
-                    <Slider onChange={this.onSliderChange}/>
-                    <Total value={this.state.sliderValue} />
+            <Card style={{marginBottom: '1rem'}} initiallyExpanded={true}>
+                <CardHeader
+                    title={this.props.title}
+                    titleStyle={{fontSize: '1.3em'}}
+                    style={{background: '#f3f3f3'}}
+                    showExpandableButton={true}
+                    actAsExpander={true}
+                />
+                <CardText expandable={true}>
+                    <Description>{this.props.description}</Description>
                     {this.props.children ? this.props.children : null}
                 </CardText>
             </Card>
