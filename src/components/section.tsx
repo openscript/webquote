@@ -1,8 +1,12 @@
 import * as React from 'react';
 import {Total} from "./total";
-import {Slider} from "material-ui";
+import {Card, CardHeader, CardText, Slider} from 'material-ui';
 
-interface Props {}
+interface Props {
+    title: string;
+    description: string;
+    updateSection: (value: number) => void;
+}
 
 interface State {
     sliderValue: number;
@@ -25,10 +29,13 @@ export class Section extends React.Component<Props, State> {
 
     public render() {
         return (
-            <div>
-                <Slider onChange={this.onSliderChange}/>
-                <Total value={this.state.sliderValue} />
-            </div>
+            <Card>
+                <CardHeader title={this.props.title} />
+                <CardText>
+                    <Slider onChange={this.onSliderChange}/>
+                    <Total value={this.state.sliderValue} />
+                </CardText>
+            </Card>
         );
     }
 }

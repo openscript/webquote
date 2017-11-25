@@ -8,7 +8,11 @@ import {defaultState, State} from './models/state';
 import {reducers} from './reducers';
 
 // set up store
-const store: Store<State> = createStore(combineReducers(reducers), defaultState, devToolsEnhancer({}));
+const store: Store<State> = createStore(
+    combineReducers(reducers),
+    defaultState,
+    devToolsEnhancer({})
+);
 
 // initialize app
 ReactDOM.render((

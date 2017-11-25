@@ -9,7 +9,7 @@
   "scripts": {
     "prod": "webpack --config webpack.prod.ts --profile",
     "test": "tslint 'src/**/*.ts?(x)'",
-    "dev": "webpack-dev-server --config webpack.dev.ts --content-base dist/ --hot --progress"
+    "dev": "webpack-dev-server --config webpack.ts --content-base dist/ --hot --progress"
   },
   "devDependencies": {
     "tslint": "^5.8.0",

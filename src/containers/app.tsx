@@ -3,8 +3,8 @@ import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from 'material-ui/styles'
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {injectGlobal} from 'styled-components';
-import {Section} from '../components/section';
 import {State} from '../models/state';
+import {SectionsContainer} from './sections';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
@@ -23,7 +23,7 @@ export class Container extends React.Component<Props, {}> {
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <div>
                     <AppBar title='Webquote' showMenuIconButton={false} />
-                    <Section />
+                    <SectionsContainer />
                 </div>
             </MuiThemeProvider>
         );

@@ -5,5 +5,7 @@ export interface State {
 }
 
 export const defaultState: State = {
-    sections: []
+    sections: [
+        {id: 'first', title: 'Title', description: 'Description', items: []}
+    ]
 };
