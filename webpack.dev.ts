@@ -26,7 +26,7 @@ const config: Configuration = {
                 use: [{
                     loader: 'awesome-typescript-loader',
                     options: {
-                        configFileName: 'tsconfig.dev.json'
+                        configFileName: 'tsconfig.json'
                     }
                 }]
             }, {

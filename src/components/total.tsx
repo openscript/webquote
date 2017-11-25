@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface Props {
-    value: number
+    value: number;
 }
 
 export class Total extends React.Component<Props, {}> {

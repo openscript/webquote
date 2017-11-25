@@ -1,9 +1,12 @@
+import {AppBar} from 'material-ui';
+import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from 'material-ui/styles';
 import * as React from 'react';
-import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from "material-ui/styles";
-import {AppBar} from "material-ui";
-import {injectGlobal} from "styled-components";
-import {Section} from "../components/section";
+import {connect} from 'react-redux';
+import {injectGlobal} from 'styled-components';
+import {Section} from '../components/section';
+import {State} from '../models/state';
 
+/* tslint:disable:no-unused-expression */
 injectGlobal`
   body {
     margin: 0;
@@ -11,17 +14,24 @@ injectGlobal`
 `;
 
 interface Props {
+    state: State;
 }
 
-const Container: React.SFC<Props> = props => {
-    return (
-        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-            <div>
-                <AppBar title='Webquote' showMenuIconButton={false} />
-                <Section />
-            </div>
-        </MuiThemeProvider>
-    );
-};
+export class Container extends React.Component<Props, {}> {
+    public render() {
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+                <div>
+                    <AppBar title='Webquote' showMenuIconButton={false} />
+                    <Section />
+                </div>
+            </MuiThemeProvider>
+        );
+    }
+}
 
-export const App = Container;
+const mapStateToProps = (state: State) => ({
+    state,
+});
+
+export const App = connect(mapStateToProps)(Container);

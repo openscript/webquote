@@ -2,8 +2,7 @@ import * as React from 'react';
 import {Total} from "./total";
 import {Slider} from "material-ui";
 
-interface Props {
-}
+interface Props {}
 
 interface State {
     sliderValue: number;
@@ -14,7 +13,7 @@ export class Section extends React.Component<Props, State> {
         super(props);
 
         const initialState: State = {
-            sliderValue: 0
+            sliderValue: 0,
         };
         this.state = initialState;
 
