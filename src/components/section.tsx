@@ -12,10 +12,9 @@ export class Section extends React.Component<Props, State> {
     public constructor(props: Props) {
         super(props);
 
-        const initialState: State = {
-            sliderValue: 0,
+        this.state = {
+            sliderValue: 0
         };
-        this.state = initialState;
 
         this.onSliderChange = this.onSliderChange.bind(this);
     }
