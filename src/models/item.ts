@@ -19,6 +19,7 @@ export interface Item {
     id: string;
     title: string;
     description: string;
+    total?: number;
     type: NoneItem | SliderItem | CheckboxItem;
 }
 
@@ -26,5 +27,6 @@ export const defaultItem: Item = {
     id: '',
     title: '',
     description: '',
+    total: 0,
     type: {discriminator: 'NoneItem'}
 };

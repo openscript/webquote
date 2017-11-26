@@ -19,7 +19,6 @@ interface Props {
     title: string;
     description: string;
     children?: ReactNode;
-    updateItem: (value: number) => void;
 }
 
 export class Item extends React.Component<Props, {}> {

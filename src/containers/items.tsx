@@ -1,7 +1,9 @@
-import {Checkbox} from 'material-ui';
 import * as React from 'react';
-import {connect} from 'react-redux';
+import {connect, Dispatch} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import styled from 'styled-components';
+import * as Actions from '../actions';
+import {CheckBoxItem} from '../components/checkboxItem';
 import {Item} from '../components/item';
 import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
@@ -18,6 +20,7 @@ const ActionWrapper = styled.div`
 
 interface Props {
     state: State;
+    actions: typeof Actions;
     items: ItemModel[];
 }
 
@@ -31,10 +34,9 @@ export class Container extends React.Component<Props, {}> {
                             <Item
                                 title={i.title}
                                 description={i.description}
-                                updateItem={this.updateFromItem}
                             >
                                 <ActionWrapper>
-                                    {this.createActionElement(i.type)}
+                                    {this.createActionComponent(i)}
                                 </ActionWrapper>
                             </Item>
                         </li>
@@ -44,10 +46,10 @@ export class Container extends React.Component<Props, {}> {
         );
     }
 
-    private createActionElement(type: ItemModel['type']) {
-        switch (type.discriminator) {
+    private createActionComponent(item: ItemModel) {
+        switch (item.type.discriminator) {
             case 'CheckboxItem': {
-                return (<Checkbox label={'test'} />);
+                return (<CheckBoxItem value={item.type.value} onTotalChange={this.createActionCallback(item)}/>);
             }
             default: {
                 return (<span>Not implemented.</span>);
@@ -55,8 +57,10 @@ export class Container extends React.Component<Props, {}> {
         }
     }
 
-    private updateFromItem(value: number): void {
-        alert('updateFromItem');
+    private createActionCallback(item: ItemModel) {
+        return (newTotal: number) => {
+            this.props.actions.updateItem(item, newTotal);
+        };
     }
 }
 
@@ -64,4 +68,8 @@ const mapStateToProps = (state: State) => ({
     state,
 });
 
-export const ItemsContainer = connect(mapStateToProps)(Container);
+const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
+    actions: bindActionCreators<any>(Actions, dispatch)
+});
+
+export const ItemsContainer = connect(mapStateToProps, mapDispatchToProps)(Container);

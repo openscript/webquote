@@ -1,9 +1,6 @@
-import {UPDATE_ITEM, UPDATE_SECTION} from '../constants/actions';
+import {UPDATE_ITEM} from '../constants/actions';
+import {Item} from '../models/item';
 
-export const updateItem = () => {
-    return {type: UPDATE_ITEM};
-};
-
-export const updateSection = () => {
-    return {type: UPDATE_SECTION};
+export const updateItem = (item: Item, newTotal: number) => {
+    return {type: UPDATE_ITEM, item};
 };
