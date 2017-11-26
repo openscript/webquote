@@ -1,10 +1,12 @@
-import {AppBar, FlatButton, FontIcon, Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui';
+import {AppBar, FlatButton, Toolbar, ToolbarGroup} from 'material-ui';
 import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from 'material-ui/styles';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {default as styled, injectGlobal} from 'styled-components';
+import {calculateTotal, Section} from '../models/section';
 import {State} from '../models/state';
 import {SectionsContainer} from './sections';
+import {Total} from '../components/total';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
@@ -49,7 +51,13 @@ export class Container extends React.Component<Props, {}> {
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <ContainerWrapper>
                     <header>
-                        <AppBar title='Webquote' showMenuIconButton={false} />
+                        <AppBar
+                            title='Webquote'
+                            showMenuIconButton={false}
+                            iconElementRight={<Total value={calculateTotal(this.props.state.sections)} />}
+                            iconStyleRight={{margin: 0, lineHeight: '64px'}}
+                        />
+
                     </header>
                     <MainWrapper>
                         <SectionsContainer />

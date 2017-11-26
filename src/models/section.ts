@@ -1,4 +1,4 @@
-import {Item} from './item';
+import {calculateSectionTotal, Item} from './item';
 
 export interface Section {
     id: string;
@@ -12,4 +12,8 @@ export const defaultSection: Section = {
     title: '',
     description: '',
     items: [],
+};
+
+export const calculateTotal = (sections: Section[]) => {
+    return sections.reduce((sum, section) => sum + calculateSectionTotal(section.items), 0);
 };

@@ -30,3 +30,7 @@ export const defaultItem: Item = {
     total: 0,
     type: {discriminator: 'NoneItem'}
 };
+
+export const calculateSectionTotal = (items: Item[]) => {
+    return items.reduce((sum, item) => item.total ? sum + item.total : sum, 0);
+};
