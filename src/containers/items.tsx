@@ -1,10 +1,10 @@
+import {Checkbox} from 'material-ui';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Item} from '../components/item';
 import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
-import {Checkbox} from 'material-ui';
 
 const ContainerWrapper = styled.ul`
   list-style: none;
