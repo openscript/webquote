@@ -10,7 +10,7 @@ const Description = styled.span`
 interface Props {
     title: string;
     description: string;
-    updateSection: (value: number) => void;
+    total?: number;
     children?: ReactNode;
 }
 
@@ -46,6 +46,7 @@ export class Section extends React.Component<Props, State> {
                 <CardText expandable={true}>
                     <Description>{this.props.description}</Description>
                     {this.props.children ? this.props.children : null}
+                    {this.props.total ? this.props.total : 0}
                 </CardText>
             </Card>
         );
