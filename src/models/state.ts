@@ -20,7 +20,13 @@ export const defaultState: State = {
         id: 'compatibility',
         title: 'Compatibility',
         description: 'Define the compatibility of the website.',
-        items: []
+        items: [{
+            id: 'secureConnection',
+            title: 'Secure Communication (HTTPS)',
+            description: 'Should the connection between the visitor and your website be encrypted? This also helps ' +
+                         'to optimize your search engine rank.',
+            type: {discriminator: 'CheckboxItem', value: 80, label: 'HTTPS'}
+        }]
     }, {
         id: 'other',
         title: 'Other',

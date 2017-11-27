@@ -6,7 +6,7 @@
     "jsx": "react",
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "dist",
+    "outDir": "./dist",
     "pretty": true,
     "sourceMap": true,
     "sourceRoot": "src",

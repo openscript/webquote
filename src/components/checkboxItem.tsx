@@ -21,9 +21,11 @@ export class CheckBoxItem extends React.Component<Props, {}> {
     }
 
     public render() {
+        const {onTotalChange, ...checkboxProps} = this.props;
+
         return (
             <div>
-                <Checkbox {...this.props} onCheck={this.onCheck}/>
+                <Checkbox {...checkboxProps} onCheck={this.onCheck}/>
             </div>
         );
     }

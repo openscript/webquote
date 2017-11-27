@@ -1,3 +1,4 @@
+import * as numeral from 'numeral';
 import * as React from 'react';
 
 interface Props {
@@ -9,7 +10,7 @@ export class Total extends React.Component<Props, {}> {
     public render() {
         return (
             <div className={this.props.className}>
-                {this.props.value}
+                CHF {numeral(this.props.value).format('0.00')}
             </div>
         );
     }
