@@ -8,6 +8,9 @@ export interface SliderItem {
 
 export interface CheckboxItem {
     discriminator: 'CheckboxItem';
+    disabled?: boolean;
+    checked?: boolean;
+    label: string;
     value: number;
 }
 

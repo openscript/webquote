@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import * as Actions from '../actions';
 import {CheckBoxItem} from '../components/checkboxItem';
 import {Item} from '../components/item';
+import {SliderItem} from '../components/sliderItem';
 import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
-import {SliderItem} from '../components/sliderItem';
 
 const ContainerWrapper = styled.ul`
   list-style: none;
-  margin: 0;
+  margin: 2rem 0 0 0;
   padding: 0;
 `;
 
@@ -50,7 +50,7 @@ export class Container extends React.Component<Props, {}> {
     private createActionComponent(item: ItemModel) {
         switch (item.type.discriminator) {
             case 'CheckboxItem': {
-                return (<CheckBoxItem value={item.type.value} onTotalChange={this.createActionCallback(item)}/>);
+                return (<CheckBoxItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);
             }
             case 'SliderItem': {
                 return (<SliderItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);

@@ -21,5 +21,16 @@ export const defaultState: State = {
         title: 'Compatibility',
         description: 'Define the compatibility of the website.',
         items: []
+    }, {
+        id: 'other',
+        title: 'Other',
+        description: 'More tasks and options to create your website.',
+        items: [{
+            id: 'orderFee',
+            title: 'Order fee',
+            description: 'To pay the infrastructure, get the project up and running some time needs to be invested. ' +
+                         'This fee covers this expenses.',
+            type: {discriminator: 'CheckboxItem', value: 200, label: 'Order fee', checked: true, disabled: true}
+        }]
     }]
 };
