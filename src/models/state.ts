@@ -27,6 +27,16 @@ export const defaultState: State = {
                          'to optimize your search engine rank.',
             type: {discriminator: 'CheckboxItem', value: 80, label: 'HTTPS'}
         }]
+    },{
+        id: 'infrastructure',
+        title: 'Infrastructure',
+        description: 'To bring a website online, infrastructure like servers or a domain name is needed.',
+        items: [{
+            id: 'hosting',
+            title: 'Hosting',
+            description: 'This server contains your website and delivers it to your visitors.',
+            type: {discriminator: 'CheckboxItem', value: 200, label: 'Order fee', checked: true, disabled: true}
+        }]
     }, {
         id: 'other',
         title: 'Other',
