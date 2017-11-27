@@ -35,7 +35,10 @@ export const defaultState: State = {
             id: 'hosting',
             title: 'Hosting',
             description: 'This server contains your website and delivers it to your visitors.',
-            type: {discriminator: 'CheckboxItem', value: 200, label: 'Order fee', checked: true, disabled: true}
+            type: {discriminator: 'RadioButtonsItem', id: 'hosting', options: [
+                {id: 'switzerland', value: 30, label: 'Hosting in Switzerland'},
+                {id: 'europe', value: 20, label: 'Hosting in Europe'}
+            ]}
         }]
     }, {
         id: 'other',

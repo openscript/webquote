@@ -14,6 +14,16 @@ export interface CheckboxItem {
     value: number;
 }
 
+export interface RadioButtonsItem {
+    discriminator: 'RadioButtonsItem';
+    id: string;
+    options: Array<{
+        id: string;
+        label: string;
+        value: number;
+    }>;
+}
+
 export interface NoneItem {
     discriminator: 'NoneItem';
 }
@@ -23,7 +33,7 @@ export interface Item {
     title: string;
     description: string;
     total?: number;
-    type: NoneItem | SliderItem | CheckboxItem;
+    type: NoneItem | SliderItem | CheckboxItem | RadioButtonsItem;
 }
 
 export const defaultItem: Item = {

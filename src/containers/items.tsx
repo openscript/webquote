@@ -8,6 +8,8 @@ import {Item} from '../components/item';
 import {SliderItem} from '../components/sliderItem';
 import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
+import {RadioButtonGroup} from 'material-ui';
+import {RadioButtonsItem} from '../components/radioButtonsItem';
 
 const ContainerWrapper = styled.ul`
   list-style: none;
@@ -54,6 +56,9 @@ export class Container extends React.Component<Props, {}> {
             }
             case 'SliderItem': {
                 return (<SliderItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);
+            }
+            case 'RadioButtonsItem': {
+                return (<RadioButtonsItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);
             }
             default: {
                 return (<span>Not implemented.</span>);
