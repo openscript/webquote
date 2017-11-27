@@ -14,7 +14,7 @@ export const defaultState: State = {
             title: 'Static pages',
             description: 'A static page is a page, which doesn\'t automatically adapt content or ' +
                          'visitors can interact with. Select the amount of such pages.',
-            type: {discriminator: 'CheckboxItem', value: 50}
+            type: {discriminator: 'SliderItem', value: 50, minimum: 1, maximum: 50, step: 1}
         }]
     }, {
         id: 'compatibility',

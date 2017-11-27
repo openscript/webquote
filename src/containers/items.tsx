@@ -7,6 +7,7 @@ import {CheckBoxItem} from '../components/checkboxItem';
 import {Item} from '../components/item';
 import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
+import {SliderItem} from '../components/sliderItem';
 
 const ContainerWrapper = styled.ul`
   list-style: none;
@@ -50,6 +51,9 @@ export class Container extends React.Component<Props, {}> {
         switch (item.type.discriminator) {
             case 'CheckboxItem': {
                 return (<CheckBoxItem value={item.type.value} onTotalChange={this.createActionCallback(item)}/>);
+            }
+            case 'SliderItem': {
+                return (<SliderItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);
             }
             default: {
                 return (<span>Not implemented.</span>);

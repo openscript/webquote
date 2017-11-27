@@ -2,7 +2,7 @@ export interface SliderItem {
     discriminator: 'SliderItem';
     minimum: number;
     maximum: number;
-    steps: number;
+    step: number;
     value: number;
 }
 
