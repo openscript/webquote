@@ -10,6 +10,10 @@ import {Total} from '../components/total';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
+  *:not(input) {
+    user-select: none;
+  }
+
   html {
     height: 100%;
     font-family: sans-serif;
