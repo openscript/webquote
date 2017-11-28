@@ -1,11 +1,7 @@
-import * as React from 'react';
-import styled from 'styled-components';
 import {Divider} from 'material-ui';
+import * as React from 'react';
 import {ReactNode} from 'react';
-
-const ComponentWrapper = styled.div`
-  margin: 1rem 0;
-`;
+import styled from 'styled-components';
 
 const Title = styled.div`
   font-size: 1.1rem;
@@ -24,12 +20,12 @@ interface Props {
 export class Item extends React.Component<Props, {}> {
     public render() {
         return (
-            <ComponentWrapper>
+            <div>
                 <Title>{this.props.title}</Title>
                 <Divider style={{marginTop: '0.3rem', marginBottom: '0.3rem'}}/>
                 <Description>{this.props.description}</Description>
                 {this.props.children ? this.props.children : null}
-            </ComponentWrapper>
+            </div>
         );
     }
 }

@@ -18,6 +18,10 @@ const ContainerWrapper = styled.ul`
   padding: 0;
 `;
 
+const ItemWrapper = styled.li`
+  margin: 2rem 0;
+`;
+
 const ActionWrapper = styled.div`
   margin-top: 0.5rem;
 `;
@@ -34,7 +38,7 @@ export class Container extends React.Component<Props, {}> {
             <ContainerWrapper>
                 {this.props.items.map((i) => {
                     return (
-                        <li key={i.id}>
+                        <ItemWrapper key={i.id}>
                             <Item
                                 title={i.title}
                                 description={i.description}
@@ -43,7 +47,7 @@ export class Container extends React.Component<Props, {}> {
                                     {this.createActionComponent(i)}
                                 </ActionWrapper>
                             </Item>
-                        </li>
+                        </ItemWrapper>
                     );
                 })}
             </ContainerWrapper>
