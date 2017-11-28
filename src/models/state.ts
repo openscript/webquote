@@ -10,11 +10,13 @@ export const defaultState: State = {
         title: 'Basis',
         description: 'Define the foundation of the website.',
         items: [{
-            id: 'staticPages',
-            title: 'Static pages',
-            description: 'A static page is a page, which doesn\'t automatically adapt content or ' +
-            'visitors can interact with. Select the amount of such pages.',
-            type: {discriminator: 'SliderItem', value: 50, minimum: 1, maximum: 50, step: 1}
+            id: 'Layout types',
+            title: 'Layout types',
+            description: 'This describes how many unique layout types the website will have. One layout type ' +
+            'describes a section of the website, which fulfills one unique task or represents a single type of ' +
+            'information. For example, a website can have a landing page, a contact area or a section, which ' +
+            'represents your team with a little photo of each person.',
+            type: {discriminator: 'SliderItem', value: 100, minimum: 1, maximum: 50, step: 1}
         }]
     }, {
         id: 'compatibility',
