@@ -25,7 +25,7 @@ export const defaultState: State = {
             title: 'Secure Communication (HTTPS)',
             description: 'Should the connection between the visitor and your website be encrypted? This also helps ' +
             'to optimize your search engine rank.',
-            type: {discriminator: 'CheckboxItem', value: 80, label: 'HTTPS'}
+            type: {discriminator: 'CheckboxItem', fixed: 80, label: 'HTTPS'}
         }]
     }, {
         id: 'infrastructure',
@@ -49,9 +49,21 @@ export const defaultState: State = {
         items: [{
             id: 'orderFee',
             title: 'Order fee',
-            description: 'To pay the infrastructure, get the project up and running some time needs to be invested. ' +
-            'This fee covers this expenses.',
-            type: {discriminator: 'CheckboxItem', value: 200, label: 'Order fee', checked: true, disabled: true}
+            description: 'To pay the infrastructure and get the project up and running some time needs to be ' +
+            'invested. This fee covers this expenses.',
+            type: {discriminator: 'CheckboxItem', fixed: 200, label: 'Order fee', checked: true, disabled: true}
+        }, {
+            id: 'maintenanceFee',
+            title: 'Maintenance fee',
+            description: 'It\'s important that the infrastructure is up to date and available. This fee covers the ' +
+            'time to make sure everything is working properly.',
+            type: {
+                discriminator: 'CheckboxItem',
+                recurring: 200,
+                label: 'Maintenance fee',
+                checked: true,
+                disabled: true
+            }
         }]
     }]
 };

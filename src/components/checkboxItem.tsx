@@ -2,11 +2,12 @@ import {Checkbox} from 'material-ui';
 import * as React from 'react';
 
 interface Props {
-    value: number;
+    fixed?: number;
+    recurring?: number;
     label: string;
     disabled?: boolean;
     checked?: boolean;
-    onTotalChange: (newTotal: number) => void;
+    onTotalChange: (fixed?: number, recurring?: number) => void;
 }
 
 export class CheckBoxItem extends React.Component<Props, {}> {
@@ -14,7 +15,7 @@ export class CheckBoxItem extends React.Component<Props, {}> {
         super(props);
 
         if (this.props.checked) {
-            this.props.onTotalChange(this.props.value);
+            this.props.onTotalChange(this.props.fixed, this.props.recurring);
         }
 
         this.onCheck = this.onCheck.bind(this);
@@ -31,6 +32,6 @@ export class CheckBoxItem extends React.Component<Props, {}> {
     }
 
     private onCheck(event: React.MouseEvent<{}>, checked: boolean) {
-        checked ? this.props.onTotalChange(this.props.value) : this.props.onTotalChange(0);
+        checked ? this.props.onTotalChange(this.props.fixed, this.props.recurring) : this.props.onTotalChange(0);
     }
 }

@@ -11,7 +11,8 @@ export interface CheckboxItem {
     disabled?: boolean;
     checked?: boolean;
     label: string;
-    value: number;
+    fixed?: number;
+    recurring?: number;
 }
 
 export interface RadioButtonsItem {
