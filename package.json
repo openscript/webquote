@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "repository": "https://github.com/openscript/webquote",
   "author": "Robin Bühler",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "scripts": {
     "prod": "webpack --config webpack.prod.ts --profile",
     "test": "tslint 'src/**/*.ts?(x)'",
