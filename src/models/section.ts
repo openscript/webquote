@@ -1,4 +1,4 @@
-import {calculateSectionTotal, Item} from './item';
+import {calculateFixedSectionTotal, calculateRecurringSectionTotal, Item} from './item';
 
 export interface Section {
     id: string;
@@ -14,6 +14,10 @@ export const defaultSection: Section = {
     items: [],
 };
 
-export const calculateTotal = (sections: Section[]) => {
-    return sections.reduce((sum, section) => sum + calculateSectionTotal(section.items), 0);
+export const calculateFixedTotal = (sections: Section[]) => {
+    return sections.reduce((sum, section) => sum + calculateFixedSectionTotal(section.items), 0);
+};
+
+export const calculateRecurringTotal = (sections: Section[]) => {
+    return sections.reduce((sum, section) => sum + calculateRecurringSectionTotal(section.items), 0);
 };

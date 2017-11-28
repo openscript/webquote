@@ -15,7 +15,8 @@ const SectionTotal = styled(Total)`
 interface Props {
     title: string;
     description: string;
-    total?: number;
+    fixedTotal?: number;
+    recurringTotal?: number;
     children?: ReactNode;
 }
 
@@ -54,7 +55,7 @@ export class Section extends React.Component<Props, State> {
                     showExpandableButton={true}
                     actAsExpander={true}
                 >
-                    <SectionTotal value={this.props.total ? this.props.total : 0} />
+                    <SectionTotal fixed={this.props.fixedTotal} recurring={this.props.recurringTotal} />
                 </CardHeader>
                 <CardText style={{display: this.state.expanded ? 'inherit' : 'none'}}>
                     <Description>{this.props.description}</Description>

@@ -6,9 +6,10 @@ interface Props {
     options: Array<{
         id: string,
         label: string,
-        value: number
+        fixed?: number,
+        recurring?: number
     }>;
-    onTotalChange: (newTotal: number) => void;
+    onTotalChange: (fixed?: number, recurring?: number) => void;
 }
 
 export class RadioButtonsItem extends React.Component<Props, {}> {
@@ -24,7 +25,7 @@ export class RadioButtonsItem extends React.Component<Props, {}> {
                 <RadioButtonGroup name={this.props.id} onChange={this.onChange}>
                     {this.props.options.map((o) => {
                         return (
-                            <RadioButton key={o.id} value={o.value} label={o.label}/>
+                            <RadioButton key={o.id} value={o.id} label={o.label}/>
                         );
                     })}
                 </RadioButtonGroup>
@@ -33,6 +34,9 @@ export class RadioButtonsItem extends React.Component<Props, {}> {
     }
 
     private onChange(event: React.FormEvent<{}>, selected: string) {
-        this.props.onTotalChange(parseInt(selected, 10));
+        const target = this.props.options.find((option) => option.id === selected);
+        if (target) {
+            this.props.onTotalChange(target.fixed, target.recurring);
+        }
     }
 }

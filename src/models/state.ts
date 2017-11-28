@@ -37,8 +37,8 @@ export const defaultState: State = {
             description: 'This server contains your website and delivers it to your visitors.',
             type: {
                 discriminator: 'RadioButtonsItem', id: 'hosting', options: [
-                    {id: 'switzerland', value: 30, label: 'Hosting in Switzerland'},
-                    {id: 'europe', value: 20, label: 'Hosting in Europe'}
+                    {id: 'switzerland', fixed: 50, recurring: 150, label: 'Hosting in Switzerland'},
+                    {id: 'europe', fixed: 50, recurring: 80, label: 'Hosting in Europe'}
                 ]
             }
         }]
