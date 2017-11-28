@@ -10,6 +10,7 @@ import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
 import {RadioButtonGroup} from 'material-ui';
 import {RadioButtonsItem} from '../components/radioButtonsItem';
+import {CheckBoxesItem} from '../components/checkboxesItem';
 
 const ContainerWrapper = styled.ul`
   list-style: none;
@@ -53,6 +54,9 @@ export class Container extends React.Component<Props, {}> {
         switch (item.type.discriminator) {
             case 'CheckboxItem': {
                 return (<CheckBoxItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);
+            }
+            case 'CheckboxesItem': {
+                return (<CheckBoxesItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);
             }
             case 'SliderItem': {
                 return (<SliderItem {...item.type} onTotalChange={this.createActionCallback(item)}/>);

@@ -15,6 +15,18 @@ export interface CheckboxItem {
     recurring?: number;
 }
 
+export interface CheckboxesItem {
+    discriminator: 'CheckboxesItem';
+    options: Array<{
+        id: string;
+        disabled?: boolean;
+        checked?: boolean;
+        label: string;
+        fixed?: number;
+        recurring?: number;
+    }>;
+}
+
 export interface RadioButtonsItem {
     discriminator: 'RadioButtonsItem';
     id: string;
@@ -36,7 +48,7 @@ export interface Item {
     description: string;
     fixed?: number;
     recurring?: number;
-    type: NoneItem | SliderItem | CheckboxItem | RadioButtonsItem;
+    type: NoneItem | SliderItem | CheckboxItem | CheckboxesItem | RadioButtonsItem;
 }
 
 export const defaultItem: Item = {

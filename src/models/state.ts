@@ -10,13 +10,22 @@ export const defaultState: State = {
         title: 'Basis',
         description: 'Define the foundation of the website.',
         items: [{
-            id: 'Layout types',
+            id: 'layoutTypes',
             title: 'Layout types',
             description: 'This describes how many unique layout types the website will have. One layout type ' +
             'describes a section of the website, which fulfills one unique task or represents a single type of ' +
             'information. For example, a website can have a landing page, a contact area or a section, which ' +
             'represents your team with a little photo of each person.',
             type: {discriminator: 'SliderItem', value: 100, minimum: 1, maximum: 50, step: 1}
+        }, {
+            id: 'features',
+            title: 'Features',
+            description: 'What should your new website offer to the visitors?',
+            type: {discriminator: 'CheckboxesItem', options: [
+                {id: 'slideshow', fixed: 100, label: 'Slideshow'},
+                {id: 'contactForm', fixed: 100, label: 'Contact form'},
+                {id: 'sitemap', fixed: 100, label: 'Sitemap'}
+            ]}
         }]
     }, {
         id: 'compatibility',
