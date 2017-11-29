@@ -16,7 +16,7 @@ export const defaultState: State = {
             'describes a section of the website, which fulfills one unique task or represents a single type of ' +
             'information. For example, a website can have a landing page, a contact area or a section, which ' +
             'represents your team with a little photo of each person.',
-            type: {discriminator: 'SliderItem', value: 100, minimum: 1, maximum: 50, step: 1}
+            type: {discriminator: 'SliderItem', fixed: 100, minimum: 1, maximum: 50, step: 1}
         }, {
             id: 'features',
             title: 'Features',

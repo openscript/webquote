@@ -3,7 +3,8 @@ export interface SliderItem {
     minimum: number;
     maximum: number;
     step: number;
-    value: number;
+    fixed?: number;
+    recurring?: number;
 }
 
 export interface CheckboxItem {

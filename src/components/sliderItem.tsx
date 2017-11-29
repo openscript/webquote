@@ -2,11 +2,12 @@ import {Slider} from 'material-ui';
 import * as React from 'react';
 
 interface Props {
-    value: number;
+    fixed?: number;
+    recurring?: number;
     minimum: number;
     maximum: number;
     step: number;
-    onTotalChange: (newTotal: number) => void;
+    onTotalChange: (fixed: number, recurring: number) => void;
 }
 
 interface State {
@@ -21,7 +22,7 @@ export class SliderItem extends React.Component<Props, State> {
             currentValue: this.props.minimum
         };
 
-        this.props.onTotalChange(this.props.value * this.props.minimum);
+        this.updateTotal(this.props.minimum);
         this.onChange = this.onChange.bind(this);
     }
 
@@ -40,8 +41,14 @@ export class SliderItem extends React.Component<Props, State> {
         );
     }
 
+    private updateTotal(value: number) {
+        const fixedTotal = this.props.fixed ? this.props.fixed * value : 0;
+        const recurringTotal = this.props.recurring ? this.props.recurring * value : 0;
+        this.props.onTotalChange(fixedTotal, recurringTotal);
+    }
+
     private onChange(event: React.MouseEvent<{}>, value: number) {
         this.setState({currentValue: value});
-        this.props.onTotalChange(this.props.value * value);
+        this.updateTotal(value);
     }
 }
