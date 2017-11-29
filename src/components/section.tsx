@@ -2,22 +2,20 @@ import {Card, CardHeader, CardText} from 'material-ui';
 import * as React from 'react';
 import {ReactNode} from 'react';
 import styled from 'styled-components';
-import {Total} from './total';
 
 const Description = styled.span`
   font-weight: bold;
 `;
 
-const SectionTotal = styled(Total)`
+const HeaderLeftWrapper = styled.div`
   margin-right: 2rem;
 `;
 
 interface Props {
     title: string;
     description: string;
-    fixedTotal?: number;
-    recurringTotal?: number;
     children?: ReactNode;
+    headerLeftElement?: ReactNode;
 }
 
 interface State {
@@ -55,7 +53,9 @@ export class Section extends React.Component<Props, State> {
                     showExpandableButton={true}
                     actAsExpander={true}
                 >
-                    <SectionTotal fixed={this.props.fixedTotal} recurring={this.props.recurringTotal} />
+                    <HeaderLeftWrapper>
+                        {this.props.headerLeftElement ? this.props.headerLeftElement : null}
+                    </HeaderLeftWrapper>
                 </CardHeader>
                 <CardText style={{display: this.state.expanded ? 'inherit' : 'none'}}>
                     <Description>{this.props.description}</Description>
