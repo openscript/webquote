@@ -24,7 +24,8 @@ export const defaultState: State = {
             type: {discriminator: 'CheckboxesItem', options: [
                 {id: 'slideshow', fixed: 100, label: 'Slideshow'},
                 {id: 'contactForm', fixed: 100, label: 'Contact form'},
-                {id: 'sitemap', fixed: 100, label: 'Sitemap'}
+                {id: 'sitemap', fixed: 100, label: 'Sitemap'},
+                {id: 'singlePage', fixed: 100, label: 'Single page'}
             ]}
         }]
     }, {
@@ -37,6 +38,27 @@ export const defaultState: State = {
             description: 'Should the connection between the visitor and your website be encrypted? This also helps ' +
             'to optimize your search engine rank.',
             type: {discriminator: 'CheckboxItem', fixed: 80, label: 'HTTPS'}
+        }, {
+            id: 'responsiveness',
+            title: 'Responsiveness',
+            description: 'Today visitors use  many different devices, with different screen sizes. Should the ' +
+            'website automatically adapt to the users screen size?',
+            type: {discriminator: 'CheckboxItem', fixed: 120, label: 'Responsiveness'}
+        }, {
+            id: 'browserSupport',
+            title: 'Browser support',
+            description: 'Unfortunately not all browser understand the code of a website in the same way. ' +
+            'Additionally there are many versions and different kind of browsers in use. Select the browser ' +
+            'which should be supported by your new website.',
+            type: {
+                discriminator: 'RadioButtonsItem', id: 'hosting', options: [
+                    {id: 'latest', fixed: 0, label: 'Latest versions of common browsers ' +
+                    '(Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari)'},
+                    {id: 'modern', fixed: 400, label: 'Modern versions of common browsers ' +
+                    '(Microsoft Internet Explorer >= 11, Microsoft Edge >= 15, Google Chrome >= 60, Mozilla Firefox ' +
+                    '>= 55, Apple Safari >= 10)'}
+                ]
+            }
         }]
     }, {
         id: 'infrastructure',
@@ -52,6 +74,11 @@ export const defaultState: State = {
                     {id: 'europe', fixed: 50, recurring: 80, label: 'Hosting in Europe'}
                 ]
             }
+        }, {
+            id: 'emailAccounts',
+            title: 'Email accounts',
+            description: 'How many email accounts or redirects do you need?',
+            type: {discriminator: 'SliderItem', fixed: 10, recurring: 10, minimum: 0, maximum: 50, step: 1}
         }]
     }, {
         id: 'other',
