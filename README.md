@@ -1,5 +1,10 @@
 # webquote
-A little wizard to create quotes for web sites.
+A little wizard to create quotes for web sites, which is used as a demonstration and an evaluation of the following 
+technologies:
+ - Typescript, React and Redux
+ - Material UI and styled components
+ - Firebase database and deployment
+ - Travis CI
 
 ## Development
 This section describes how webquote is developed and how you can take part.
