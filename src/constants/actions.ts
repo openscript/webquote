@@ -1,1 +1,2 @@
 export const UPDATE_ITEM = 'UPDATE_ITEM';
+export const INDEX_DEFINITIONS = 'INDEX_DEFINITIONS';

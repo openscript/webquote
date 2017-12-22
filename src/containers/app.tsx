@@ -7,6 +7,7 @@ import {Total} from '../components/total';
 import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
 import {SectionsContainer} from './sections';
+import {DefinitionsContainer} from './definitions';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
@@ -69,7 +70,7 @@ export class Container extends React.Component<Props, {}> {
 
                     </header>
                     <MainWrapper>
-                        <SectionsContainer />
+                        <DefinitionsContainer />
                     </MainWrapper>
                     <footer>
                         <Toolbar>
