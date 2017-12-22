@@ -32,7 +32,7 @@ interface Props {
     items: ItemModel[];
 }
 
-export class Container extends React.Component<Props, {}> {
+class Container extends React.Component<Props, {}> {
     public render() {
         return (
             <ContainerWrapper>

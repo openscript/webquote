@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider, Store} from 'react-redux';
 import {getFirebase, reactReduxFirebase} from 'react-redux-firebase';
-import {routerMiddleware} from 'react-router-redux';
+import {ConnectedRouter as Router, routerMiddleware} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension/developmentOnly';
 import thunk from 'redux-thunk';
@@ -34,6 +34,8 @@ const store: Store<State> = createStore(
 // initialize app
 ReactDOM.render((
     <Provider store={store}>
-        <App />
+        <Router history={history}>
+            <App />
+        </Router>
     </Provider>
 ), document.getElementById('app'));

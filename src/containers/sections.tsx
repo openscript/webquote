@@ -10,7 +10,7 @@ interface Props {
     state: State;
 }
 
-export class Container extends React.Component<Props, {}> {
+class Container extends React.Component<Props, {}> {
     public render() {
         return (
             <div>

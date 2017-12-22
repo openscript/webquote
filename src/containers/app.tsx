@@ -1,12 +1,14 @@
 import {AppBar, FlatButton, Toolbar, ToolbarGroup} from 'material-ui';
 import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from 'material-ui/styles';
 import * as React from 'react';
-import {connect} from 'react-redux';
+import {connect, Dispatch} from 'react-redux';
+import {RouteComponentProps, withRouter} from 'react-router';
+import {bindActionCreators} from 'redux';
 import {default as styled, injectGlobal} from 'styled-components';
+import * as Actions from '../actions';
 import {Total} from '../components/total';
 import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
-import {SectionsContainer} from './sections';
 import {DefinitionsContainer} from './definitions';
 
 /* tslint:disable:no-unused-expression */
@@ -46,11 +48,12 @@ const MainWrapper = styled.main`
   margin: 1rem;
 `;
 
-interface Props {
+interface Props extends RouteComponentProps<{}> {
     state: State;
+    actions: typeof Actions;
 }
 
-export class Container extends React.Component<Props, {}> {
+class Container extends React.Component<Props, {}> {
     public render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
@@ -96,4 +99,8 @@ const mapStateToProps = (state: State) => ({
     state,
 });
 
-export const App = connect(mapStateToProps)(Container);
+const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
+    actions: bindActionCreators<typeof Actions>(Actions, dispatch)
+});
+
+export const App = withRouter(connect(mapStateToProps, mapDispatchToProps)(Container));
