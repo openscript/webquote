@@ -3,14 +3,13 @@ import {connect, Dispatch} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import styled from 'styled-components';
 import * as Actions from '../actions';
+import {CheckBoxesItem} from '../components/checkboxesItem';
 import {CheckBoxItem} from '../components/checkboxItem';
 import {Item} from '../components/item';
+import {RadioButtonsItem} from '../components/radioButtonsItem';
 import {SliderItem} from '../components/sliderItem';
 import {CheckboxItem, Item as ItemModel} from '../models/item';
 import {State} from '../models/state';
-import {RadioButtonGroup} from 'material-ui';
-import {RadioButtonsItem} from '../components/radioButtonsItem';
-import {CheckBoxesItem} from '../components/checkboxesItem';
 
 const ContainerWrapper = styled.ul`
   list-style: none;

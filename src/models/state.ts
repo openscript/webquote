@@ -1,12 +1,12 @@
 import {Definition} from './definition';
-import {Section} from './section';
+import {defaultQuote, Quote} from './quote';
 
 export interface State {
-    sections: Section[];
-    defintions: Definition[];
+    quote: Quote;
+    definitions: Definition[];
 }
 
 export const defaultState: State = {
-    sections: [],
-    defintions: []
+    quote: defaultQuote,
+    definitions: []
 };

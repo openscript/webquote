@@ -47,6 +47,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
+    "slugify": "^1.2.7",
     "style-loader": "^0.19.1",
     "styled-components": "^2.4.0",
     "ts-node": "^4.0.2",

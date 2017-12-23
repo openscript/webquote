@@ -2,7 +2,7 @@ import {AppBar, FlatButton, Toolbar, ToolbarGroup} from 'material-ui';
 import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from 'material-ui/styles';
 import * as React from 'react';
 import {connect, Dispatch} from 'react-redux';
-import {RouteComponentProps, withRouter} from 'react-router';
+import {Route, RouteComponentProps, withRouter} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {default as styled, injectGlobal} from 'styled-components';
 import * as Actions from '../actions';
@@ -10,6 +10,7 @@ import {Total} from '../components/total';
 import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
 import {DefinitionsContainer} from './definitions';
+import {QuoteContainer} from './quote';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
@@ -64,8 +65,8 @@ class Container extends React.Component<Props, {}> {
                             showMenuIconButton={false}
                             iconElementRight={
                                 <Total
-                                    fixed={calculateFixedTotal(this.props.state.sections)}
-                                    recurring={calculateRecurringTotal(this.props.state.sections)}
+                                    fixed={calculateFixedTotal(this.props.state.quote.sections)}
+                                    recurring={calculateRecurringTotal(this.props.state.quote.sections)}
                                 />
                             }
                             iconStyleRight={{margin: 0, lineHeight: '64px', color: 'white'}}
@@ -73,7 +74,15 @@ class Container extends React.Component<Props, {}> {
 
                     </header>
                     <MainWrapper>
-                        <DefinitionsContainer />
+                        <Route
+                            path={'/'}
+                            exact={true}
+                            component={DefinitionsContainer}
+                        />
+                        <Route
+                            path={'/quote/:template'}
+                            component={QuoteContainer}
+                        />
                     </MainWrapper>
                     <footer>
                         <Toolbar>

@@ -1,15 +1,11 @@
-import {Section} from '../components/section';
+import {Section} from './section';
 
 export interface Definition {
     name: string;
-    definition: {
-        sections: Section[]
-    };
+    sections: Section[];
 }
 
 export const defaultDefinition: Definition = {
     name: '',
-    definition: {
-        sections: []
-    }
+    sections: []
 };

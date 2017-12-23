@@ -1,15 +1,18 @@
 import * as types from '../constants/actions';
-import {Section} from '../models/section';
+import {defaultQuote, Quote} from '../models/quote';
 
-export const sections = (state: Section[] = [], action: any) => {
+export const quote = (state: Quote = defaultQuote, action: any) => {
     switch (action.type) {
+        case types.SET_QUOTE_FROM_DEFINITION:
+            return {title: action.definition.name, sections: action.definition.sections};
         case types.UPDATE_ITEM:
-            return state.map((section) => {
+            const sections = state.sections.map((section) => {
                 const items = section.items.map(
                     (item) => item.id === action.item.id ? action.item : item
                 );
                 return {...section, items};
             });
+            return {...state, sections};
         default:
             return state;
     }
