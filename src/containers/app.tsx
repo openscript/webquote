@@ -55,6 +55,12 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 class Container extends React.Component<Props, {}> {
+    constructor(props: Props) {
+        super(props);
+
+        this.navigateToHome = this.navigateToHome.bind(this);
+    }
+
     public render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
@@ -62,6 +68,7 @@ class Container extends React.Component<Props, {}> {
                     <header>
                         <AppBar
                             title='Webquote'
+                            onTitleTouchTap={this.navigateToHome}
                             showMenuIconButton={false}
                             iconElementRight={
                                 <Total
@@ -69,6 +76,7 @@ class Container extends React.Component<Props, {}> {
                                     recurring={calculateRecurringTotal(this.props.state.quote.sections)}
                                 />
                             }
+                            titleStyle={{cursor: 'pointer'}}
                             iconStyleRight={{margin: 0, lineHeight: '64px', color: 'white'}}
                         />
 
@@ -101,6 +109,10 @@ class Container extends React.Component<Props, {}> {
                 </ContainerWrapper>
             </MuiThemeProvider>
         );
+    }
+
+    private navigateToHome() {
+        this.props.history.push('/');
     }
 }
 
