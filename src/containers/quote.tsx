@@ -2,11 +2,9 @@ import * as React from 'react';
 import {connect, Dispatch} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {bindActionCreators} from 'redux';
-import slugify from 'slugify';
 import * as Actions from '../actions';
 import {Section} from '../components/section/section';
 import {Total} from '../components/total';
-import {Definition} from '../models/definition';
 import {calculateFixedSectionTotal, calculateRecurringSectionTotal} from '../models/item';
 import {State} from '../models/state';
 import {ItemsContainer} from './items';
@@ -26,15 +24,7 @@ class Container extends React.Component<Props, {}> {
     }
 
     public componentWillMount() {
-        const definition = this.props.state.definitions.find(
-            (d) => slugify(d.name.toLowerCase()) === this.props.match.params.template
-        );
-
-        if (!definition) {
-            this.props.history.push('/');
-        } else {
-            this.props.actions.setQuoteFromDefinition(definition);
-        }
+        this.props.actions.setQuoteFromDefinitionName(this.props.match.params.template);
     }
 
     public render() {
