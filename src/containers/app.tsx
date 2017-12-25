@@ -11,6 +11,7 @@ import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
 import {DefinitionsContainer} from './definitions';
 import {QuoteContainer} from './quote';
+import {defaultQuote} from '../models/quote';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
@@ -62,6 +63,16 @@ class Container extends React.Component<Props, {}> {
     }
 
     public render() {
+        const rightElements = (
+            <div>
+                {this.props.state.quote !== defaultQuote
+                    ? <Total
+                        fixed={calculateFixedTotal(this.props.state.quote.sections)}
+                        recurring={calculateRecurringTotal(this.props.state.quote.sections)}
+                    /> : null}
+            </div>
+        );
+
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <ContainerWrapper>
@@ -70,12 +81,7 @@ class Container extends React.Component<Props, {}> {
                             title='Webquote'
                             onTitleTouchTap={this.navigateToHome}
                             showMenuIconButton={false}
-                            iconElementRight={
-                                <Total
-                                    fixed={calculateFixedTotal(this.props.state.quote.sections)}
-                                    recurring={calculateRecurringTotal(this.props.state.quote.sections)}
-                                />
-                            }
+                            iconElementRight={rightElements}
                             titleStyle={{cursor: 'pointer'}}
                             iconStyleRight={{margin: 0, lineHeight: '64px', color: 'white'}}
                         />
