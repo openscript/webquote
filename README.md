@@ -1,10 +1,10 @@
 # webquote
-A little wizard to create quotes for web sites, which is used as a demonstration and an evaluation of the following 
+A little wizard to create quotes for web sites, which was developed as a demonstration and an evaluation of the following 
 technologies:
- - Typescript, React and Redux
- - Material UI and styled components
- - Firebase database and deployment
- - Travis CI
+ - [Typescript](https://github.com/Microsoft/TypeScript), [React](https://github.com/facebook/react), [Redux](https://github.com/reactjs/redux) and [Redux Thunk](https://github.com/gaearon/redux-thunk)
+ - [Material UI](https://github.com/mui-org/material-ui) and [styled components](https://github.com/styled-components/styled-components)
+ - [Firebase](https://github.com/firebase/firebase-js-sdk) and deployment
+ - [Travis CI](https://travis-ci.org/)
 
 ## Development
 This section describes how webquote is developed and how you can take part.
