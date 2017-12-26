@@ -1,8 +1,9 @@
+import {stripTrailingSlash} from 'history/PathUtils';
 import {BottomNavigation, BottomNavigationItem, CircularProgress} from 'material-ui';
 import SaveIcon from 'material-ui/svg-icons/content/save';
 import SendIcon from 'material-ui/svg-icons/content/send';
-import * as React from 'react';
 import {CSSProperties, ReactNode} from 'react';
+import * as React from 'react';
 import {connect, Dispatch} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {bindActionCreators} from 'redux';
@@ -38,6 +39,7 @@ const ActionBarWrapper = styled.div`
 `;
 
 interface Params {
+    method: string;
     template: string;
 }
 
@@ -63,6 +65,7 @@ class Container extends React.Component<Props, ContainerState> {
         this.isTicking = false;
 
         this.toggleStickyActionBar = this.toggleStickyActionBar.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     public componentWillMount() {
@@ -70,24 +73,24 @@ class Container extends React.Component<Props, ContainerState> {
     }
 
     public componentDidMount() {
-        window.addEventListener('scroll', (e) => {
-            if (!this.isTicking) {
-                window.requestAnimationFrame(() => {
-                    if (window.scrollY < document.body.offsetHeight - window.innerHeight - 75) {
-                        this.toggleStickyActionBar(true);
-                    } else {
-                        this.toggleStickyActionBar(false);
-                    }
-                    this.isTicking = false;
-                });
-                this.isTicking = true;
-            }
-        });
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    public componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
     public render() {
         let loadedQuote: ReactNode = <LoadingIndicator />;
         let actionBar: ReactNode = null;
+
+        const saveAction = () => {
+            alert('not implemented');
+        };
+
+        const sendAction = () => {
+            this.props.history.push(`${stripTrailingSlash(this.props.match.url)}/send`);
+        };
 
         if (this.props.state.quote !== defaultQuote) {
             loadedQuote = this.props.state.quote.sections.map((s) => {
@@ -110,8 +113,16 @@ class Container extends React.Component<Props, ContainerState> {
             actionBar = (
                 <ActionBarWrapper style={this.state.isActionBarSticky ? StickyActionBar : undefined}>
                     <BottomNavigation >
-                        <BottomNavigationItem icon={<SaveIcon/>} label={'Save'}/>
-                        <BottomNavigationItem icon={<SendIcon/>} label={'Send'}/>
+                        <BottomNavigationItem
+                            icon={<SaveIcon/>}
+                            onClick={saveAction}
+                            label={'Save'}
+                        />
+                        <BottomNavigationItem
+                            icon={<SendIcon/>}
+                            onClick={sendAction}
+                            label={'Send'}
+                        />
                     </BottomNavigation>
                 </ActionBarWrapper>
             );
@@ -128,6 +139,20 @@ class Container extends React.Component<Props, ContainerState> {
     private toggleStickyActionBar(current: boolean) {
         if (this.state.isActionBarSticky !== current) {
             this.setState({isActionBarSticky: current});
+        }
+    }
+
+    private handleScroll() {
+        if (!this.isTicking) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY < document.body.offsetHeight - window.innerHeight - 75) {
+                    this.toggleStickyActionBar(true);
+                } else {
+                    this.toggleStickyActionBar(false);
+                }
+                this.isTicking = false;
+            });
+            this.isTicking = true;
         }
     }
 }
