@@ -1,11 +1,12 @@
 # webquote
 A little wizard to create quotes for web sites, which was developed as a demonstration and an evaluation of the following 
 technologies:
- - [Typescript](https://github.com/Microsoft/TypeScript), [React](https://github.com/facebook/react), [Redux](https://github.com/reactjs/redux) and [Redux Thunk](https://github.com/gaearon/redux-thunk)
- - [Material UI](https://github.com/mui-org/material-ui) and [styled components](https://github.com/styled-components/styled-components)
- - [Firebase](https://github.com/firebase/firebase-js-sdk) and deployment
- - [Travis CI](https://travis-ci.org/)
-
+ - [x] [Typescript](https://github.com/Microsoft/TypeScript), [React](https://github.com/facebook/react), [Redux](https://github.com/reactjs/redux) and [Redux Thunk](https://github.com/gaearon/redux-thunk)
+ - [x] [Material UI](https://github.com/mui-org/material-ui) and [styled components](https://github.com/styled-components/styled-components)
+ - [x] [Firebase](https://github.com/firebase/firebase-js-sdk) and deployment
+ - [x] [Travis CI](https://travis-ci.org/)
+ - [ ] [Enzyme](https://github.com/airbnb/enzyme)
+ 
 ## Development
 This section describes how webquote is developed and how you can take part.
 
