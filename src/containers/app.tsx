@@ -7,11 +7,12 @@ import {bindActionCreators} from 'redux';
 import {default as styled, injectGlobal} from 'styled-components';
 import * as Actions from '../actions';
 import {Total} from '../components/total';
+import {defaultQuote} from '../models/quote';
 import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
 import {DefinitionsContainer} from './definitions';
 import {QuoteContainer} from './quote';
-import {defaultQuote} from '../models/quote';
+import {SendContainer} from './send';
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
@@ -94,8 +95,13 @@ class Container extends React.Component<Props, {}> {
                             component={DefinitionsContainer}
                         />
                         <Route
-                            path={'/quote/:template'}
+                            path={'/quote/:method/:template'}
+                            exact={true}
                             component={QuoteContainer}
+                        />
+                        <Route
+                            path={'/quote/:method/:template/send'}
+                            component={SendContainer}
                         />
                     </MainWrapper>
                     <footer>

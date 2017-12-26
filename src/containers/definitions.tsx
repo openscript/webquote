@@ -61,7 +61,7 @@ class Container extends React.Component<Props, {}> {
     }
 
     private handleSelect(name: string) {
-        this.props.history.push(`${this.props.match.url}quote/${slugify(name.toLowerCase())}`);
+        this.props.history.push(`${this.props.match.url}quote/from-definition/${slugify(name.toLowerCase())}`);
     }
 }
 
