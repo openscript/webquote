@@ -11,7 +11,7 @@ const indexDefinitionsSuccess = (definitions: Definition[]) => {
 };
 
 export const indexDefinitions = () => {
-    return (dispatch: Dispatch<State>, getState: () => State, getFirebase: () => any) => {
+    return (dispatch: Dispatch<State>, getState: () => State, getFirebase: () => firebase.app.App) => {
         const definitionsRef = getFirebase().database().ref('definitions');
         return definitionsRef.once('value').then((data: DataSnapshot) => {
             dispatch(indexDefinitionsSuccess(data.val()));

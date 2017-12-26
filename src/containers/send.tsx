@@ -29,7 +29,7 @@ class Container extends React.Component<Props, {}> {
 
     public render() {
         const onSubmitAction = (forename: string, surname: string, email: string, phone: string) => {
-            alert(forename);
+            this.props.actions.sendQuote(this.props.state.quote, {forename, surname, email, phone});
         };
 
         return (
