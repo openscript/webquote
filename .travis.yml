@@ -8,3 +8,11 @@ cache:
 
 script:
   - yarn prod
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token:
+    secure: hsdMBqllw4LM966LdPACKCOb38PcZYLglCV483yC/F6cvhWem5fe47oPzZP2PXzervbJLo3IV1/Bhj4U74dm/QiVmjCI2bN4kQq1ZGTeU1KWUi5QLwPlpnYFQ57V365dG4JRH5IrsjDfChKHsCIyX80BzWquY3phjlNuLMpZCNTN5/euzL6fCKUctsyJMGxBTT/3JQudxgiryaC5811/l2v7O0nnBYhfeWxQrbFSFypyudjNyNAbTCXEWvQr4BNm/4d6n3cuRhmXyCyKfl4dytiofPcufYIn9YblTTHgljTmD5EnJWvmqrfSON9LAiZa1dr59604xO3rJVwtMg3W8yGYUp0q/OEajG8T19ih/EB2aRNxG7WCfMwrIwJGJVEFWrsYqxnX0tq2MTTQ+vC3Q1x96GLVmbgcyO4XhKGzLhKgPNfO8eeHg9LgPUZVA8sLtWXC8W7TmhIRczECti8wU58EYDQZJHJOBSFZLHL76D002NTOLIc/ZCH6p3yq+92y4eqjz5pnud+AevK8dOKvstXPO95tuCzGM0R5bnkM40c+bw6LLrq34YXaGMw7XnJWD2Qg2LQyoZlBv9cOhoZufJjbDZbZID684JozXAPx99Fnx3SO+p1Hd+Hi6Ih7dLUb9F1A1lAuv/Oomo94yVqLAjBMzl45+rpADGxsE9j0S78=
+  on:
+    branch: master
