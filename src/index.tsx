@@ -8,13 +8,14 @@ import {ConnectedRouter as Router, routerMiddleware} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension/developmentOnly';
 import thunk from 'redux-thunk';
+import {BASE_URL} from './constants/environment';
 import {App} from './containers/app';
 import {defaultState, State} from './models/state';
 import {reducers} from './reducers';
 import {firebaseConfig, reduxFirebaseConfig} from './utils/firebase';
 
 // Set up routing history
-const history = createBrowserHistory();
+const history = createBrowserHistory({basename: BASE_URL});
 const reduxRouterMiddleware = routerMiddleware(history);
 
 // initialize firebase

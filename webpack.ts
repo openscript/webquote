@@ -51,6 +51,7 @@ const config: Configuration = {
         new DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('development'),
+                BASE_URL: JSON.stringify('/')
             }
         })
     ]
