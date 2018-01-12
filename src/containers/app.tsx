@@ -80,7 +80,7 @@ class Container extends React.Component<Props, {}> {
                     <header>
                         <AppBar
                             title='Webquote'
-                            onTitleTouchTap={this.navigateToHome}
+                            onTitleClick={this.navigateToHome}
                             showMenuIconButton={false}
                             iconElementRight={rightElements}
                             titleStyle={{cursor: 'pointer'}}
