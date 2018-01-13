@@ -24,6 +24,7 @@ Follow these steps to get started:
       1. Install the [Yarn](https://yarnpkg.com/lang/en/docs/install/#linux-tab) repository key <br> `curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -`
       1. Add the [Yarn](https://yarnpkg.com/lang/en/docs/install/#linux-tab) repository <br> `echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list`
       1. Update repositories <br> `apt update`
-      1. Install Yarn <br> `apt install nodejs yarn` 
+      1. Install Yarn <br> `apt install nodejs yarn`
+   1. On Arch with pacman <br> `pacman -S yarn`
 1. Install dependencies <br> `yarn install`
 1. Start the webpack server <br> `yarn dev`
