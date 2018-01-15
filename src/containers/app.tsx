@@ -10,7 +10,7 @@ import {Total} from '../components/total';
 import {defaultQuote} from '../models/quote';
 import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
-import {DefinitionsContainer} from './definitions';
+import {DashboardContainer} from './dashboard';
 import {QuoteContainer} from './quote';
 import {SendContainer} from './send';
 
@@ -92,7 +92,7 @@ class Container extends React.Component<Props, {}> {
                         <Route
                             path={'/'}
                             exact={true}
-                            component={DefinitionsContainer}
+                            component={DashboardContainer}
                         />
                         <Route
                             path={'/quote/:method/:template'}

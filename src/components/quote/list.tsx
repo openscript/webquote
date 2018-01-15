@@ -1,5 +1,5 @@
 import {Avatar, List, ListItem} from 'material-ui';
-import FileFolder from 'material-ui/svg-icons/file/folder';
+import FileIcon from 'material-ui/svg-icons/editor/insert-drive-file';
 import * as React from 'react';
 import {Quote} from '../../models/quote';
 
@@ -21,7 +21,7 @@ export class QuoteList extends React.Component<Props, {}> {
                 {this.props.quotes.map((quote) => (
                     <ListItem
                         key={quote.title}
-                        leftAvatar={<Avatar icon={<FileFolder />}/>}
+                        leftAvatar={<Avatar icon={<FileIcon />}/>}
                         primaryText={quote.title}
                         onClick={this.createOnClickHandler(quote.title)}
                     />

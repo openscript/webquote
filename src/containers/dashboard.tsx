@@ -40,6 +40,7 @@ class Container extends React.Component<Props, {}> {
 
     public render() {
         let loadedDefinitions = <LoadingIndicator />;
+        let savedQuotes = null;
 
         if (this.isReady()) {
             loadedDefinitions = (
@@ -50,15 +51,23 @@ class Container extends React.Component<Props, {}> {
             );
         }
 
+        if (this.props.state.savedQuotes.length > 0) {
+            savedQuotes = [
+                <h2 key={'quotes-list-heading'}>Saved quotes list</h2>,
+                (
+                    <QuoteList
+                        quotes={this.props.state.savedQuotes}
+                        onQuoteSelect={this.handleSavedQuoteSelect}
+                    />
+                )
+            ];
+        }
+
         return (
             <Wrapper>
                 <h2>Definition list</h2>
                 {loadedDefinitions}
-                <h2>Saved quotes list</h2>
-                <QuoteList
-                    quotes={this.props.state.savedQuotes}
-                    onQuoteSelect={this.handleSavedQuoteSelect}
-                />
+                {savedQuotes}
             </Wrapper>
         );
     }
@@ -83,4 +92,4 @@ const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
     actions: bindActionCreators<typeof Actions>(Actions, dispatch)
 });
 
-export const DefinitionsContainer = connect(mapStateToProps, mapDispatchToProps)(Container);
+export const DashboardContainer = connect(mapStateToProps, mapDispatchToProps)(Container);
