@@ -4,3 +4,4 @@ export const UPDATE_ENVIRONMENT = 'UPDATE_ENVIRONMENT';
 export const INDEX_DEFINITIONS = 'INDEX_DEFINITIONS';
 export const SET_CONTACT = 'SET_CONTACT';
 export const SEND_QUOTE = 'SEND_QUOTE';
+export const SAVE_QUOTE = 'SAVE_QUOTE';

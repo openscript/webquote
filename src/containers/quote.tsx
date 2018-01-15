@@ -85,7 +85,7 @@ class Container extends React.Component<Props, ContainerState> {
         let actionBar: ReactNode = null;
 
         const saveAction = () => {
-            alert('not implemented');
+            this.props.actions.saveQuote(this.props.state.quote);
         };
 
         const sendAction = () => {

@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 import {Dispatch} from 'react-redux';
 import slugify from 'slugify';
-import {SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, UPDATE_ITEM} from '../constants/actions';
+import {SAVE_QUOTE, SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, UPDATE_ITEM} from '../constants/actions';
 import {Contact} from '../models/contact';
 import {Definition} from '../models/definition';
 import {Item} from '../models/item';
@@ -38,7 +38,6 @@ export const updateItem = (item: Item, fixed: number, recurring: number) => {
 };
 
 const sendQuoteSuccess = () => {
-    alert('holycow');
     return {type: SEND_QUOTE};
 };
 
@@ -47,4 +46,8 @@ export const sendQuote = (quote: Quote, contact: Contact) => {
         const quotesRef = getFirebase().database().ref('quotes').push();
         quotesRef.set({contact, quote}, sendQuoteSuccess);
     };
+};
+
+export const saveQuote = (quote: Quote) => {
+    return {type: SAVE_QUOTE, quote};
 };
