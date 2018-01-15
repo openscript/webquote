@@ -45,6 +45,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "redux-persist": "^5.4.0",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "slugify": "^1.2.9",

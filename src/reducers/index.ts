@@ -4,6 +4,7 @@ import {contact} from './contact';
 import {definitions} from './definitions';
 import {environment} from './environment';
 import {quote} from './quote';
+import {quotes} from './quotes';
 
 export const reducers = {
     contact,
@@ -11,5 +12,6 @@ export const reducers = {
     definitions,
     firebase: firebaseReducer,
     quote,
+    savedQuotes: quotes,
     router: routerReducer
 };

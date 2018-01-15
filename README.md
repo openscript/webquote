@@ -1,10 +1,14 @@
 # webquote
 A little wizard to create quotes for web sites, which was developed as a demonstration and an evaluation of the following 
 technologies:
- - [x] [Typescript](https://github.com/Microsoft/TypeScript), [React](https://github.com/facebook/react), [Redux](https://github.com/reactjs/redux) and [Redux Thunk](https://github.com/gaearon/redux-thunk)
- - [x] [Material UI](https://github.com/mui-org/material-ui) and [styled components](https://github.com/styled-components/styled-components)
- - [x] [Firebase](https://github.com/firebase/firebase-js-sdk) and deployment to [GitHub Pages](https://pages.github.com/)
- - [x] [Travis CI](https://travis-ci.org/)
+ - [x] [Typescript](https://github.com/Microsoft/TypeScript), [React](https://github.com/facebook/react) and [Redux](https://github.com/reactjs/redux)
+   - [React Router](https://github.com/ReactTraining/react-router)
+   - [Redux Thunk](https://github.com/gaearon/redux-thunk) <br> Middleware to return functions from actions, which is used for asynchronous actions.
+   - [Redux Persist](https://github.com/rt2zz/redux-persist) <br> Redux store, which is used to persist a certain part of the state to the local storage.
+ - [x] [Material UI](https://github.com/mui-org/material-ui) and [Styled Components](https://github.com/styled-components/styled-components)
+ - [x] [Firebase](https://github.com/firebase/firebase-js-sdk)
+ - [x] [Travis CI](https://travis-ci.org/) and with deployment to [GitHub Pages](https://pages.github.com/)
+ - [x] [Webpack](https://github.com/webpack/webpack)
  - [ ] [Enzyme](https://github.com/airbnb/enzyme)
  
 ## Development

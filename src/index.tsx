@@ -5,8 +5,12 @@ import * as ReactDOM from 'react-dom';
 import {Provider, Store} from 'react-redux';
 import {getFirebase, reactReduxFirebase} from 'react-redux-firebase';
 import {ConnectedRouter as Router, routerMiddleware} from 'react-router-redux';
-import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension/developmentOnly';
+import {persistCombineReducers, persistStore} from 'redux-persist';
+import {PersistGate} from 'redux-persist/es/integration/react';
+import storage from 'redux-persist/es/storage';
+import {PersistConfig} from 'redux-persist/es/types';
 import thunk from 'redux-thunk';
 import {BASE_URL} from './constants/environment';
 import {App} from './containers/app';
@@ -14,7 +18,7 @@ import {defaultState, State} from './models/state';
 import {reducers} from './reducers';
 import {firebaseConfig, reduxFirebaseConfig} from './utils/firebase';
 
-// Set up routing history
+// set up routing history
 const history = createBrowserHistory({basename: BASE_URL});
 const reduxRouterMiddleware = routerMiddleware(history);
 
@@ -22,8 +26,14 @@ const reduxRouterMiddleware = routerMiddleware(history);
 firebase.initializeApp(firebaseConfig);
 
 // set up store
+const persistConfig: PersistConfig = {
+    key: 'webquote',
+    whitelist: ['savedQuotes'],
+    storage
+};
+const persistReducers = persistCombineReducers<State>(persistConfig, reducers);
 const store: Store<State> = createStore(
-    combineReducers(reducers),
+    persistReducers,
     defaultState,
     compose(
         reactReduxFirebase(firebase, reduxFirebaseConfig),
@@ -31,12 +41,15 @@ const store: Store<State> = createStore(
         devToolsEnhancer({})
     )
 );
+const persistor = persistStore(store);
 
 // initialize app
 ReactDOM.render((
     <Provider store={store}>
-        <Router history={history}>
-            <App />
-        </Router>
+        <PersistGate loading={<span>Loading local storage...</span>} persistor={persistor}>
+            <Router history={history}>
+                <App />
+            </Router>
+        </PersistGate>
     </Provider>
 ), document.getElementById('app'));
