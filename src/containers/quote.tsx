@@ -39,8 +39,8 @@ const ActionBarWrapper = styled.div`
 `;
 
 interface Params {
-    method: string;
-    template: string;
+    method: 'from-definition'|'from-saved';
+    target: string;
 }
 
 interface Props extends RouteComponentProps<Params> {
@@ -69,7 +69,14 @@ class Container extends React.Component<Props, ContainerState> {
     }
 
     public componentWillMount() {
-        this.props.actions.setQuoteFromDefinitionName(this.props.match.params.template);
+        switch (this.props.match.params.method) {
+            case 'from-definition':
+                this.props.actions.setQuoteFromDefinitionName(this.props.match.params.target);
+                break;
+            case 'from-saved':
+                this.props.actions.setQuoteFromSavedQuoteTitle(this.props.match.params.target);
+                break;
+        }
     }
 
     public componentDidMount() {

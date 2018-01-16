@@ -95,12 +95,12 @@ class Container extends React.Component<Props, {}> {
                             component={DashboardContainer}
                         />
                         <Route
-                            path={'/quote/:method/:template'}
+                            path={'/quote/:method/:target'}
                             exact={true}
                             component={QuoteContainer}
                         />
                         <Route
-                            path={'/quote/:method/:template/send'}
+                            path={'/quote/:method/:target/send'}
                             component={SendContainer}
                         />
                     </MainWrapper>

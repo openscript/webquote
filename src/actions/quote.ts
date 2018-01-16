@@ -1,7 +1,10 @@
 import * as firebase from 'firebase';
 import {Dispatch} from 'react-redux';
 import slugify from 'slugify';
-import {SAVE_QUOTE, SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, UPDATE_ITEM} from '../constants/actions';
+import {
+    SAVE_QUOTE, SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, SET_QUOTE_FROM_SAVED_QUOTE,
+    UPDATE_ITEM
+} from '../constants/actions';
 import {Contact} from '../models/contact';
 import {Definition} from '../models/definition';
 import {Item} from '../models/item';
@@ -29,6 +32,22 @@ export const setQuoteFromDefinitionName = (name: string) => {
             dispatch(indexDefinitions()).then(() => findDefinition());
         } else {
             findDefinition();
+        }
+    };
+};
+
+export const setQuoteFromSavedQuote = (quote: Quote) => {
+    return {type: SET_QUOTE_FROM_SAVED_QUOTE, quote};
+};
+
+export const setQuoteFromSavedQuoteTitle = (title: string) => {
+    return (dispatch: Dispatch<State>, getState: () => State) => {
+        const quote = getState().savedQuotes.find(
+            (q) => slugify(q.title.toLowerCase()) === title
+        );
+
+        if (quote) {
+            dispatch(setQuoteFromSavedQuote(quote));
         }
     };
 };

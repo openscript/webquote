@@ -81,6 +81,7 @@ class Container extends React.Component<Props, {}> {
     }
 
     private handleSavedQuoteSelect(title: string) {
+        this.props.history.push(`${this.props.match.url}quote/from-saved/${slugify(title.toLowerCase())}`);
     }
 }
 
