@@ -1,3 +1,8 @@
+declare module "*.json" {
+    const value: any;
+    export default value;
+}
+
 declare module 'redux-persist' {
     export * from 'redux-persist/es/constants';
     export * from 'redux-persist/es/types';
