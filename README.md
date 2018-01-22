@@ -7,7 +7,7 @@ technologies:
    - [Redux Persist](https://github.com/rt2zz/redux-persist) <br> Redux store, which is used to persist a certain part of the state to the local storage.
  - [x] [Material UI](https://github.com/mui-org/material-ui) and [Styled Components](https://github.com/styled-components/styled-components)
  - [x] [Firebase](https://github.com/firebase/firebase-js-sdk)
- - [x] [Travis CI](https://travis-ci.org/) and with deployment to [GitHub Pages](https://pages.github.com/)
+ - [x] [Travis CI](https://travis-ci.org/) with deployment to [GitHub Pages](https://pages.github.com/)
  - [x] [Webpack](https://github.com/webpack/webpack)
  - [ ] [Enzyme](https://github.com/airbnb/enzyme)
  
