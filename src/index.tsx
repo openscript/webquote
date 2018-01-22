@@ -12,14 +12,14 @@ import {PersistGate} from 'redux-persist/es/integration/react';
 import storage from 'redux-persist/es/storage';
 import {PersistConfig} from 'redux-persist/es/types';
 import thunk from 'redux-thunk';
-import {BASE_URL} from './constants/environment';
 import {App} from './containers/app';
 import {defaultState, State} from './models/state';
 import {reducers} from './reducers';
 import {firebaseConfig, reduxFirebaseConfig} from './utils/firebase';
 
 // set up routing history
-const history = createHashHistory({basename: BASE_URL});
+// const history = createBrowserHistory({basename: BASE_URL});
+const history = createHashHistory();
 const reduxRouterMiddleware = routerMiddleware(history);
 
 // initialize firebase
