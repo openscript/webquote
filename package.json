@@ -12,9 +12,11 @@
     "dev": "webpack-dev-server --config webpack.ts --content-base dist/ --hot --progress"
   },
   "devDependencies": {
+    "@types/webpack-bundle-analyzer": "^2.9.0",
     "tslint": "^5.9.1",
     "tslint-react": "^3.4.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.1",
+    "webpack-bundle-analyzer": "^2.9.2"
   },
   "dependencies": {
     "@types/copy-webpack-plugin": "^4.0.1",

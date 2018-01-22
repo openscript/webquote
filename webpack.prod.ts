@@ -1,6 +1,7 @@
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as path from 'path';
 import {Configuration, DefinePlugin, LoaderOptionsPlugin, optimize} from 'webpack';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const config: Configuration = {
     entry: './src/index.tsx',
@@ -58,6 +59,10 @@ const config: Configuration = {
                 NODE_ENV: JSON.stringify('production'),
                 BASE_URL: JSON.stringify('/webquote')
             }
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false
         }),
         new optimize.UglifyJsPlugin(),
         new optimize.ModuleConcatenationPlugin()
