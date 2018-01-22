@@ -1,6 +1,10 @@
 import {Checkbox} from 'material-ui';
 import * as React from 'react';
 
+interface ExternalState {
+    checked: string[];
+}
+
 interface Props {
     options: Array<{
         id: string;
@@ -10,7 +14,8 @@ interface Props {
         disabled?: boolean;
         checked?: boolean;
     }>;
-    onTotalChange: (fixed?: number, recurring?: number) => void;
+    state?: ExternalState;
+    onTotalChange: (fixed?: number, recurring?: number, state?: ExternalState) => void;
 }
 
 interface State {
@@ -22,6 +27,7 @@ interface State {
         disabled?: boolean;
         checked?: boolean;
     }>;
+    state: ExternalState;
 }
 
 export class CheckBoxesItem extends React.Component<Props, State> {
@@ -29,7 +35,8 @@ export class CheckBoxesItem extends React.Component<Props, State> {
         super(props);
 
         this.state = {
-            options: this.props.options
+            options: this.populateOptions(),
+            state: this.props.state ? this.props.state : {checked: []}
         };
 
         this.updateTotal();
@@ -55,6 +62,20 @@ export class CheckBoxesItem extends React.Component<Props, State> {
         );
     }
 
+    private populateOptions() {
+        let populatedOptions = this.props.options;
+        if (this.props.state && this.props.state.checked.length > 0) {
+            const externalState = this.props.state;
+            populatedOptions = populatedOptions.map((option) => {
+                if (externalState.checked.indexOf(option.id) > -1) {
+                    return {...option, checked: true};
+                }
+                return option;
+            });
+        }
+        return populatedOptions;
+    }
+
     private updateTotal() {
         const fixedTotal = this.state.options.reduce(
             (sum, option) => option.checked && option.fixed ? option.fixed + sum : sum, 0
@@ -62,7 +83,8 @@ export class CheckBoxesItem extends React.Component<Props, State> {
         const recurringTotal = this.state.options.reduce(
             (sum, option) => option.checked && option.recurring ? option.recurring + sum : sum, 0
         );
-        this.props.onTotalChange(fixedTotal, recurringTotal);
+        const checked = this.state.options.filter((value) => value.checked).map((value) => value.id);
+        this.props.onTotalChange(fixedTotal, recurringTotal, {checked});
     }
 
     private createOnCheck(id: string) {
@@ -70,7 +92,6 @@ export class CheckBoxesItem extends React.Component<Props, State> {
             this.setState({options: this.state.options.map(
                 (option) => option.id === id ? {...option, checked} : option
             )}, () => this.updateTotal());
-
         };
     }
 }

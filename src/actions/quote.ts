@@ -52,8 +52,9 @@ export const setQuoteFromSavedQuoteTitle = (title: string) => {
     };
 };
 
-export const updateItem = (item: Item, fixed: number, recurring: number) => {
-    return {type: UPDATE_ITEM, item: {...item, fixed, recurring}};
+export const updateItem = (item: Item, fixed: number, recurring: number, state?: typeof item.type.state) => {
+    const type = {...item.type, ...{state}};
+    return {type: UPDATE_ITEM, item: {...item, fixed, recurring, type}};
 };
 
 const sendQuoteSuccess = () => {

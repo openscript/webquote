@@ -7,22 +7,23 @@ interface Props {
     minimum: number;
     maximum: number;
     step: number;
-    onTotalChange: (fixed: number, recurring: number) => void;
+    state?: State;
+    onTotalChange: (fixed: number, recurring: number, state: State) => void;
 }
 
 interface State {
-    currentValue: number;
+    selectedStep: number;
 }
 
 export class SliderItem extends React.Component<Props, State> {
     public constructor(props: Props) {
         super(props);
 
-        this.state = {
-            currentValue: this.props.minimum
+        this.state = this.props.state ? this.props.state : {
+            selectedStep: this.props.minimum
         };
 
-        this.updateTotal(this.props.minimum);
+        this.updateTotal(this.state.selectedStep);
         this.onChange = this.onChange.bind(this);
     }
 
@@ -32,11 +33,12 @@ export class SliderItem extends React.Component<Props, State> {
                 <Slider
                     min={this.props.minimum}
                     max={this.props.maximum}
+                    defaultValue={this.state.selectedStep}
                     step={this.props.step}
                     onChange={this.onChange}
                     sliderStyle={{margin: '1rem 0'}}
                 />
-                <span>{`You have selected ${this.state.currentValue}.`}</span>
+                <span>{`You have selected ${this.state.selectedStep}.`}</span>
             </div>
         );
     }
@@ -44,11 +46,11 @@ export class SliderItem extends React.Component<Props, State> {
     private updateTotal(value: number) {
         const fixedTotal = this.props.fixed ? this.props.fixed * value : 0;
         const recurringTotal = this.props.recurring ? this.props.recurring * value : 0;
-        this.props.onTotalChange(fixedTotal, recurringTotal);
+        this.props.onTotalChange(fixedTotal, recurringTotal, {selectedStep: value});
     }
 
     private onChange(event: React.MouseEvent<{}>, value: number) {
-        this.setState({currentValue: value});
+        this.setState({selectedStep: value});
         this.updateTotal(value);
     }
 }
