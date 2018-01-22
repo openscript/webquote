@@ -1,7 +1,10 @@
 import * as firebase from 'firebase';
 import {Dispatch} from 'react-redux';
 import slugify from 'slugify';
-import {SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, UPDATE_ITEM} from '../constants/actions';
+import {
+    SAVE_QUOTE, SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, SET_QUOTE_FROM_SAVED_QUOTE,
+    UPDATE_ITEM
+} from '../constants/actions';
 import {Contact} from '../models/contact';
 import {Definition} from '../models/definition';
 import {Item} from '../models/item';
@@ -33,12 +36,28 @@ export const setQuoteFromDefinitionName = (name: string) => {
     };
 };
 
-export const updateItem = (item: Item, fixed: number, recurring: number) => {
-    return {type: UPDATE_ITEM, item: {...item, fixed, recurring}};
+export const setQuoteFromSavedQuote = (quote: Quote) => {
+    return {type: SET_QUOTE_FROM_SAVED_QUOTE, quote};
+};
+
+export const setQuoteFromSavedQuoteTitle = (title: string) => {
+    return (dispatch: Dispatch<State>, getState: () => State) => {
+        const quote = getState().savedQuotes.find(
+            (q) => slugify(q.title.toLowerCase()) === title
+        );
+
+        if (quote) {
+            dispatch(setQuoteFromSavedQuote(quote));
+        }
+    };
+};
+
+export const updateItem = (item: Item, fixed: number, recurring: number, state?: typeof item.type.state) => {
+    const type = {...item.type, ...{state}};
+    return {type: UPDATE_ITEM, item: {...item, fixed, recurring, type}};
 };
 
 const sendQuoteSuccess = () => {
-    alert('holycow');
     return {type: SEND_QUOTE};
 };
 
@@ -47,4 +66,8 @@ export const sendQuote = (quote: Quote, contact: Contact) => {
         const quotesRef = getFirebase().database().ref('quotes').push();
         quotesRef.set({contact, quote}, sendQuoteSuccess);
     };
+};
+
+export const saveQuote = (quote: Quote) => {
+    return {type: SAVE_QUOTE, quote};
 };

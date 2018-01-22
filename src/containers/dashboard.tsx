@@ -7,6 +7,7 @@ import slugify from 'slugify';
 import styled from 'styled-components';
 import * as Actions from '../actions';
 import {DefinitionList} from '../components/definition/list';
+import {QuoteList} from '../components/quote/list';
 import {State} from '../models/state';
 
 const Wrapper = styled.div`
@@ -29,7 +30,8 @@ class Container extends React.Component<Props, {}> {
         super(props);
 
         this.isReady = this.isReady.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
+        this.handleDefinitionSelect = this.handleDefinitionSelect.bind(this);
+        this.handleSavedQuoteSelect = this.handleSavedQuoteSelect.bind(this);
     }
 
     public componentWillMount() {
@@ -38,20 +40,34 @@ class Container extends React.Component<Props, {}> {
 
     public render() {
         let loadedDefinitions = <LoadingIndicator />;
+        let savedQuotes = null;
 
         if (this.isReady()) {
             loadedDefinitions = (
                 <DefinitionList
                     definitions={this.props.state.definitions}
-                    onDefinitionSelect={this.handleSelect}
+                    onDefinitionSelect={this.handleDefinitionSelect}
                 />
             );
+        }
+
+        if (this.props.state.savedQuotes.length > 0) {
+            savedQuotes = [
+                <h2 key={'quotes-list-heading'}>Saved quotes list</h2>,
+                (
+                    <QuoteList
+                        quotes={this.props.state.savedQuotes}
+                        onQuoteSelect={this.handleSavedQuoteSelect}
+                    />
+                )
+            ];
         }
 
         return (
             <Wrapper>
                 <h2>Definition list</h2>
                 {loadedDefinitions}
+                {savedQuotes}
             </Wrapper>
         );
     }
@@ -60,8 +76,12 @@ class Container extends React.Component<Props, {}> {
         return this.props.state.definitions.length > 0;
     }
 
-    private handleSelect(name: string) {
+    private handleDefinitionSelect(name: string) {
         this.props.history.push(`${this.props.match.url}quote/from-definition/${slugify(name.toLowerCase())}`);
+    }
+
+    private handleSavedQuoteSelect(title: string) {
+        this.props.history.push(`${this.props.match.url}quote/from-saved/${slugify(title.toLowerCase())}`);
     }
 }
 
@@ -73,4 +93,4 @@ const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
     actions: bindActionCreators<typeof Actions>(Actions, dispatch)
 });
 
-export const DefinitionsContainer = connect(mapStateToProps, mapDispatchToProps)(Container);
+export const DashboardContainer = connect(mapStateToProps, mapDispatchToProps)(Container);

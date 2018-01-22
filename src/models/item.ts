@@ -1,5 +1,8 @@
 export interface SliderItem {
     discriminator: 'SliderItem';
+    state?: {
+        selectedStep: number;
+    };
     minimum: number;
     maximum: number;
     step: number;
@@ -9,6 +12,9 @@ export interface SliderItem {
 
 export interface CheckboxItem {
     discriminator: 'CheckboxItem';
+    state?: {
+        checked: boolean;
+    };
     disabled?: boolean;
     checked?: boolean;
     label: string;
@@ -18,6 +24,9 @@ export interface CheckboxItem {
 
 export interface CheckboxesItem {
     discriminator: 'CheckboxesItem';
+    state?: {
+        checked: string[];
+    };
     options: Array<{
         id: string;
         disabled?: boolean;
@@ -30,6 +39,9 @@ export interface CheckboxesItem {
 
 export interface RadioButtonsItem {
     discriminator: 'RadioButtonsItem';
+    state?: {
+        selected: string;
+    };
     id: string;
     options: Array<{
         id: string;
@@ -41,6 +53,7 @@ export interface RadioButtonsItem {
 
 export interface NoneItem {
     discriminator: 'NoneItem';
+    state?: null;
 }
 
 export interface Item {
@@ -58,7 +71,7 @@ export const defaultItem: Item = {
     description: '',
     fixed: 0,
     recurring: 0,
-    type: {discriminator: 'NoneItem'}
+    type: {discriminator: 'NoneItem', state: null}
 };
 
 export const calculateFixedSectionTotal = (items: Item[]) => {

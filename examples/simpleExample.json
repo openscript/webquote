@@ -1,0 +1,147 @@
+{
+  "name" : "Simple example",
+  "sections" : [ {
+    "description" : "Define the foundation of the website.",
+    "id" : "basis",
+    "items" : [ {
+      "description" : "This describes how many unique layout types the website will have. One layout type describes a section of the website, which fulfills one unique task or represents a single type of information. For example, a website can have a landing page, a contact area or a section, which represents your team with a little photo of each person.",
+      "id" : "layoutTypes",
+      "title" : "Layout types",
+      "type" : {
+        "discriminator" : "SliderItem",
+        "fixed" : 100,
+        "maximum" : 50,
+        "minimum" : 1,
+        "step" : 1
+      }
+    }, {
+      "description" : "What should your new website offer to the visitors?",
+      "id" : "features",
+      "title" : "Features",
+      "type" : {
+        "discriminator" : "CheckboxesItem",
+        "options" : [ {
+          "fixed" : 100,
+          "id" : "slideshow",
+          "label" : "Slideshow"
+        }, {
+          "fixed" : 100,
+          "id" : "contactForm",
+          "label" : "Contact form"
+        }, {
+          "fixed" : 100,
+          "id" : "sitemap",
+          "label" : "Sitemap"
+        }, {
+          "fixed" : 100,
+          "id" : "singlePage",
+          "label" : "Single page"
+        } ]
+      }
+    } ],
+    "title" : "Basis"
+  }, {
+    "description" : "Define the compatibility of the website.",
+    "id" : "compatibility",
+    "items" : [ {
+      "description" : "Should the connection between the visitor and your website be encrypted? This also helps to optimize your search engine rank.",
+      "id" : "secureConnection",
+      "title" : "Secure Communication (HTTPS)",
+      "type" : {
+        "discriminator" : "CheckboxItem",
+        "fixed" : 80,
+        "label" : "HTTPS"
+      }
+    }, {
+      "description" : "Today visitors use  many different devices, with different screen sizes. Should the website automatically adapt to the users screen size?",
+      "id" : "responsiveness",
+      "title" : "Responsiveness",
+      "type" : {
+        "discriminator" : "CheckboxItem",
+        "fixed" : 120,
+        "label" : "Responsiveness"
+      }
+    }, {
+      "description" : "Unfortunately not all browser understand the code of a website in the same way. Additionally there are many versions and different kind of browsers in use. Select the browser which should be supported by your new website.",
+      "id" : "browserSupport",
+      "title" : "Browser support",
+      "type" : {
+        "discriminator" : "RadioButtonsItem",
+        "id" : "hosting",
+        "options" : [ {
+          "fixed" : 0,
+          "id" : "latest",
+          "label" : "Latest versions of common browsers (Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari)"
+        }, {
+          "fixed" : 400,
+          "id" : "modern",
+          "label" : "Modern versions of common browsers (Microsoft Internet Explorer >= 11, Microsoft Edge >= 15, Google Chrome >= 60, Mozilla Firefox >= 55, Apple Safari >= 10)"
+        } ]
+      }
+    } ],
+    "title" : "Compatibility"
+  }, {
+    "description" : "To bring a website online, infrastructure like servers or a domain name is needed.",
+    "id" : "infrastructure",
+    "items" : [ {
+      "description" : "This server contains your website and delivers it to your visitors.",
+      "id" : "hosting",
+      "title" : "Hosting",
+      "type" : {
+        "discriminator" : "RadioButtonsItem",
+        "id" : "hosting",
+        "options" : [ {
+          "fixed" : 50,
+          "id" : "switzerland",
+          "label" : "Hosting in Switzerland",
+          "recurring" : 150
+        }, {
+          "fixed" : 50,
+          "id" : "europe",
+          "label" : "Hosting in Europe",
+          "recurring" : 80
+        } ]
+      }
+    }, {
+      "description" : "How many email accounts or redirects do you need?",
+      "id" : "emailAccounts",
+      "title" : "Email accounts",
+      "type" : {
+        "discriminator" : "SliderItem",
+        "fixed" : 10,
+        "maximum" : 50,
+        "minimum" : 0,
+        "recurring" : 10,
+        "step" : 1
+      }
+    } ],
+    "title" : "Infrastructure"
+  }, {
+    "description" : "More tasks and options to create your website.",
+    "id" : "other",
+    "items" : [ {
+      "description" : "To pay the infrastructure and get the project up and running some time needs to be invested. This fee covers this expenses.",
+      "id" : "orderFee",
+      "title" : "Order fee",
+      "type" : {
+        "checked" : true,
+        "disabled" : true,
+        "discriminator" : "CheckboxItem",
+        "fixed" : 200,
+        "label" : "Order fee"
+      }
+    }, {
+      "description" : "It's important that the infrastructure is up to date and available. This fee covers the time to make sure everything is working properly.",
+      "id" : "maintenanceFee",
+      "title" : "Maintenance fee",
+      "type" : {
+        "checked" : true,
+        "disabled" : true,
+        "discriminator" : "CheckboxItem",
+        "label" : "Maintenance fee",
+        "recurring" : 200
+      }
+    } ],
+    "title" : "Other"
+  } ]
+}

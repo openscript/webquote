@@ -15,7 +15,8 @@ const config: Configuration = {
     },
 
     resolve: {
-        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.json'],
+        modules: [path.resolve(__dirname, 'examples'), 'node_modules']
     },
 
     module: {

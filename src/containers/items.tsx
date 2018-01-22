@@ -74,10 +74,10 @@ class Container extends React.Component<Props, {}> {
     }
 
     private createActionCallback(item: ItemModel) {
-        return (fixed?: number, recurring?: number) => {
+        return (fixed?: number, recurring?: number, state?: typeof item.type.state) => {
             const fixedValue = fixed ? fixed : 0;
             const recurringValue = recurring ? recurring : 0;
-            this.props.actions.updateItem(item, fixedValue, recurringValue);
+            this.props.actions.updateItem(item, fixedValue, recurringValue, state);
         };
     }
 }

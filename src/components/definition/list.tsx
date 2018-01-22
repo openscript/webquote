@@ -1,5 +1,5 @@
 import {Avatar, List, ListItem} from 'material-ui';
-import FileFolder from 'material-ui/svg-icons/file/folder';
+import FolderIcon from 'material-ui/svg-icons/file/folder';
 import * as React from 'react';
 import {Definition} from '../../models/definition';
 
@@ -21,7 +21,7 @@ export class DefinitionList extends React.Component<Props, {}> {
                 {this.props.definitions.map((definition) => (
                     <ListItem
                         key={definition.name}
-                        leftAvatar={<Avatar icon={<FileFolder />}/>}
+                        leftAvatar={<Avatar icon={<FolderIcon />}/>}
                         primaryText={definition.name}
                         onClick={this.createOnClickHandler(definition.name)}
                     />

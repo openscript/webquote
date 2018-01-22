@@ -7,22 +7,32 @@ interface Props {
     label: string;
     disabled?: boolean;
     checked?: boolean;
-    onTotalChange: (fixed?: number, recurring?: number) => void;
+    state?: State;
+    onTotalChange: (fixed?: number, recurring?: number, state?: State) => void;
 }
 
-export class CheckBoxItem extends React.Component<Props, {}> {
+interface State {
+    checked: boolean;
+}
+
+export class CheckBoxItem extends React.Component<Props, State> {
     public constructor(props: Props) {
         super(props);
 
-        if (this.props.checked) {
-            this.props.onTotalChange(this.props.fixed, this.props.recurring);
-        }
+        this.state = this.props.state ? this.props.state : {
+            checked: this.props.checked ? this.props.checked : false
+        };
 
+        this.updateTotal(this.state.checked);
         this.onCheck = this.onCheck.bind(this);
     }
 
     public render() {
-        const {onTotalChange, ...checkboxProps} = this.props;
+        const checkboxProps = {
+            label: this.props.label,
+            disabled: this.props.disabled,
+            checked: this.state.checked
+        };
 
         return (
             <div>
@@ -31,7 +41,14 @@ export class CheckBoxItem extends React.Component<Props, {}> {
         );
     }
 
+    private updateTotal(value: boolean) {
+        value
+            ? this.props.onTotalChange(this.props.fixed, this.props.recurring, {checked: value})
+            : this.props.onTotalChange(0, 0, {checked: value});
+    }
+
     private onCheck(event: React.MouseEvent<{}>, checked: boolean) {
-        checked ? this.props.onTotalChange(this.props.fixed, this.props.recurring) : this.props.onTotalChange(0);
+        this.setState({checked});
+        this.updateTotal(checked);
     }
 }
