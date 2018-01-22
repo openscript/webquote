@@ -9,7 +9,10 @@ technologies:
  - [x] [Firebase](https://github.com/firebase/firebase-js-sdk)
  - [x] [Travis CI](https://travis-ci.org/) with deployment to [GitHub Pages](https://pages.github.com/)
  - [x] [Webpack](https://github.com/webpack/webpack)
+   - [Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) <br> Plugin to analyze the resulting bundle.js. The report can be found [here](https://openscript.github.io/webquote/report.html).
  - [ ] [Enzyme](https://github.com/airbnb/enzyme)
+ 
+A production build is automatically deployed to [Github Pages](https://openscript.github.io/webquote). 
  
 ## Development
 This section describes how webquote is developed and how you can take part.
