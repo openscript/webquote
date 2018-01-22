@@ -39,16 +39,19 @@ class Container extends React.Component<Props, {}> {
     }
 
     public render() {
-        let loadedDefinitions = <LoadingIndicator />;
+        let loadedDefinitions = [<LoadingIndicator key={'loading-indicator'}/>];
         let savedQuotes = null;
 
         if (this.isReady()) {
-            loadedDefinitions = (
-                <DefinitionList
-                    definitions={this.props.state.definitions}
-                    onDefinitionSelect={this.handleDefinitionSelect}
-                />
-            );
+            loadedDefinitions = [
+                <h2 key={'definitions-list-heading'}>Definition list</h2>,
+                (
+                    <DefinitionList
+                        definitions={this.props.state.definitions}
+                        onDefinitionSelect={this.handleDefinitionSelect}
+                    />
+                )
+            ];
         }
 
         if (this.props.state.savedQuotes.length > 0) {
@@ -65,7 +68,6 @@ class Container extends React.Component<Props, {}> {
 
         return (
             <Wrapper>
-                <h2>Definition list</h2>
                 {loadedDefinitions}
                 {savedQuotes}
             </Wrapper>
