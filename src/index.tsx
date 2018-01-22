@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-import {createBrowserHistory} from 'history';
+import createHashHistory from 'history/createHashHistory';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider, Store} from 'react-redux';
@@ -19,7 +19,7 @@ import {reducers} from './reducers';
 import {firebaseConfig, reduxFirebaseConfig} from './utils/firebase';
 
 // set up routing history
-const history = createBrowserHistory({basename: BASE_URL});
+const history = createHashHistory({basename: BASE_URL});
 const reduxRouterMiddleware = routerMiddleware(history);
 
 // initialize firebase
