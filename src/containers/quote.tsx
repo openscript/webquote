@@ -12,7 +12,6 @@ import * as Actions from '../actions';
 import {Section} from '../components/section/section';
 import {Total} from '../components/total';
 import {calculateFixedSectionTotal, calculateRecurringSectionTotal} from '../models/item';
-import {defaultQuote} from '../models/quote';
 import {State} from '../models/state';
 import {ItemsContainer} from './items';
 
@@ -49,6 +48,7 @@ interface Props extends RouteComponentProps<Params> {
 }
 
 interface ContainerState {
+    isUpdating: boolean;
     isActionBarSticky: boolean;
 }
 
@@ -59,6 +59,7 @@ class Container extends React.Component<Props, ContainerState> {
         super(props);
 
         this.state = {
+            isUpdating: false,
             isActionBarSticky: true,
         };
 
@@ -69,17 +70,22 @@ class Container extends React.Component<Props, ContainerState> {
     }
 
     public componentWillMount() {
-        switch (this.props.match.params.method) {
-            case 'from-definition':
-                this.props.actions.setQuoteFromDefinitionName(this.props.match.params.target);
-                break;
-            case 'from-saved':
-                this.props.actions.setQuoteFromSavedQuoteTitle(this.props.match.params.target);
-                break;
+        if (this.props.match.params.method === 'from-definition' || this.props.match.params.method === 'from-saved') {
+            this.setState({...this.state, isUpdating: true});
         }
     }
 
     public componentDidMount() {
+        switch (this.props.match.params.method) {
+            case 'from-definition':
+                this.props.actions.setQuoteFromDefinitionName(this.props.match.params.target);
+                this.setState({...this.state, isUpdating: false});
+                break;
+            case 'from-saved':
+                this.props.actions.setQuoteFromSavedQuoteTitle(this.props.match.params.target);
+                this.setState({...this.state, isUpdating: false});
+                break;
+        }
         window.addEventListener('scroll', this.handleScroll);
     }
 
@@ -92,14 +98,16 @@ class Container extends React.Component<Props, ContainerState> {
         let actionBar: ReactNode = null;
 
         const saveAction = () => {
-            this.props.actions.saveQuote(this.props.state.quote);
+            if (this.props.state.quote) {
+                this.props.actions.saveQuote(this.props.state.quote);
+            }
         };
 
         const sendAction = () => {
             this.props.history.push(`${stripTrailingSlash(this.props.match.url)}/send`);
         };
 
-        if (this.props.state.quote !== defaultQuote) {
+        if (this.props.state.quote && !this.state.isUpdating) {
             loadedQuote = this.props.state.quote.sections.map((s) => {
                 return (
                     <Section

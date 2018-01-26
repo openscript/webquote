@@ -5,7 +5,7 @@ import {defaultQuote, Quote} from './quote';
 
 export interface State {
     environment: Environment;
-    quote: Quote;
+    quote?: Quote;
     savedQuotes: Quote[];
     contact?: Contact;
     definitions: Definition[];
@@ -13,7 +13,6 @@ export interface State {
 
 export const defaultState: State = {
     environment: defaultEnvironment,
-    quote: defaultQuote,
     savedQuotes: [],
     definitions: []
 };

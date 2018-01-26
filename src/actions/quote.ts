@@ -2,8 +2,7 @@ import * as firebase from 'firebase';
 import {Dispatch} from 'react-redux';
 import slugify from 'slugify';
 import {
-    SAVE_QUOTE, SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, SET_QUOTE_FROM_SAVED_QUOTE,
-    UPDATE_ITEM
+    SAVE_QUOTE, SEND_QUOTE, SET_QUOTE_FROM_DEFINITION, SET_QUOTE_FROM_SAVED_QUOTE, UPDATE_ITEM
 } from '../constants/actions';
 import {Contact} from '../models/contact';
 import {Definition} from '../models/definition';

@@ -4,8 +4,8 @@ import {RouteComponentProps} from 'react-router';
 import {bindActionCreators} from 'redux';
 import styled from 'styled-components';
 import * as Actions from '../actions';
-import {State} from '../models/state';
 import {ContactForm} from '../components/contact/form';
+import {State} from '../models/state';
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,7 +29,9 @@ class Container extends React.Component<Props, {}> {
 
     public render() {
         const onSubmitAction = (forename: string, surname: string, email: string, phone: string) => {
-            this.props.actions.sendQuote(this.props.state.quote, {forename, surname, email, phone});
+            if (this.props.state.quote) {
+                this.props.actions.sendQuote(this.props.state.quote, {forename, surname, email, phone});
+            }
         };
 
         return (

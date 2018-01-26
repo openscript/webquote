@@ -1,4 +1,4 @@
-import {AppBar, FlatButton, Toolbar, ToolbarGroup} from 'material-ui';
+import {AppBar, FlatButton, RaisedButton, Toolbar, ToolbarGroup} from 'material-ui';
 import {getMuiTheme, lightBaseTheme, MuiThemeProvider} from 'material-ui/styles';
 import * as React from 'react';
 import {connect, Dispatch} from 'react-redux';
@@ -51,6 +51,11 @@ const MainWrapper = styled.main`
   margin: 1rem;
 `;
 
+const AppBarElementsWrapper = styled.div`
+  display: flex;
+  line-height: 36px;
+`;
+
 interface Props extends RouteComponentProps<{}> {
     state: State;
     actions: typeof Actions;
@@ -61,19 +66,10 @@ class Container extends React.Component<Props, {}> {
         super(props);
 
         this.navigateToHome = this.navigateToHome.bind(this);
+        this.navigateToCurrent = this.navigateToCurrent.bind(this);
     }
 
     public render() {
-        const rightElements = (
-            <div>
-                {this.props.state.quote !== defaultQuote
-                    ? <Total
-                        fixed={calculateFixedTotal(this.props.state.quote.sections)}
-                        recurring={calculateRecurringTotal(this.props.state.quote.sections)}
-                    /> : null}
-            </div>
-        );
-
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <ContainerWrapper>
@@ -82,9 +78,15 @@ class Container extends React.Component<Props, {}> {
                             title='Webquote'
                             onTitleClick={this.navigateToHome}
                             showMenuIconButton={false}
-                            iconElementRight={rightElements}
+                            iconElementRight={this.createRightAppBarElements()}
                             titleStyle={{cursor: 'pointer'}}
-                            iconStyleRight={{margin: 0, lineHeight: '64px', color: 'white'}}
+                            iconStyleRight={{
+                                margin: 0,
+                                lineHeight: '64px',
+                                color: 'white',
+                                display: 'flex',
+                                alignSelf: 'center'
+                            }}
                         />
 
                     </header>
@@ -95,7 +97,7 @@ class Container extends React.Component<Props, {}> {
                             component={DashboardContainer}
                         />
                         <Route
-                            path={'/quote/:method/:target'}
+                            path={'/quote/:method/:target?'}
                             exact={true}
                             component={QuoteContainer}
                         />
@@ -123,8 +125,32 @@ class Container extends React.Component<Props, {}> {
         );
     }
 
+    private createRightAppBarElements() {
+        if (this.props.state.quote) {
+            return (
+                <AppBarElementsWrapper>
+                    <RaisedButton
+                        label={'Continue editing'}
+                        primary={true}
+                        style={{marginRight: '1rem'}}
+                        onClick={this.navigateToCurrent}
+                    />
+                    <Total
+                        fixed={calculateFixedTotal(this.props.state.quote.sections)}
+                        recurring={calculateRecurringTotal(this.props.state.quote.sections)}
+                    />
+                </AppBarElementsWrapper>
+            );
+        }
+        return undefined;
+    }
+
     private navigateToHome() {
         this.props.history.push('/');
+    }
+
+    private navigateToCurrent() {
+        this.props.history.push('/quote/current');
     }
 }
 

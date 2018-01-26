@@ -34,6 +34,7 @@ export class SliderItem extends React.Component<Props, State> {
                     min={this.props.minimum}
                     max={this.props.maximum}
                     defaultValue={this.state.selectedStep}
+                    value={this.state.selectedStep}
                     step={this.props.step}
                     onChange={this.onChange}
                     sliderStyle={{margin: '1rem 0'}}
