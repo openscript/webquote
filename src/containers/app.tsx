@@ -7,7 +7,6 @@ import {bindActionCreators} from 'redux';
 import {default as styled, injectGlobal} from 'styled-components';
 import * as Actions from '../actions';
 import {Total} from '../components/total';
-import {defaultQuote} from '../models/quote';
 import {calculateFixedTotal, calculateRecurringTotal} from '../models/section';
 import {State} from '../models/state';
 import {DashboardContainer} from './dashboard';
