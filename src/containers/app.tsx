@@ -37,12 +37,6 @@ injectGlobal`
   }
 `;
 
-const ContainerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-`;
-
 const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
@@ -71,7 +65,7 @@ class Container extends React.Component<Props, {}> {
     public render() {
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-                <ContainerWrapper>
+                <>
                     <header>
                         <AppBar
                             title='Webquote'
@@ -119,7 +113,7 @@ class Container extends React.Component<Props, {}> {
                             </ToolbarGroup>
                         </Toolbar>
                     </footer>
-                </ContainerWrapper>
+                </>
             </MuiThemeProvider>
         );
     }
