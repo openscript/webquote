@@ -3,6 +3,7 @@ import * as path from 'path';
 import {Configuration, DefinePlugin} from 'webpack';
 
 const config: Configuration = {
+    mode: 'development',
     entry: './src/index.tsx',
     output: {
         filename: 'bundle.js',

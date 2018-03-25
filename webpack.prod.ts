@@ -5,6 +5,7 @@ import {Configuration, DefinePlugin, LoaderOptionsPlugin} from 'webpack';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const config: Configuration = {
+    mode: 'production',
     entry: './src/index.tsx',
     output: {
         filename: 'bundle.js',
