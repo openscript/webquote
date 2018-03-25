@@ -1,6 +1,7 @@
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as path from 'path';
-import {Configuration, DefinePlugin, LoaderOptionsPlugin, optimize} from 'webpack';
+import * as UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import {Configuration, DefinePlugin, LoaderOptionsPlugin} from 'webpack';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 const config: Configuration = {
@@ -46,6 +47,15 @@ const config: Configuration = {
         ]
     },
 
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true
+            })
+        ]
+    },
+
     plugins: [
         new CopyWebpackPlugin([{
             from: 'src/index.html'
@@ -63,9 +73,7 @@ const config: Configuration = {
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false
-        }),
-        new optimize.UglifyJsPlugin(),
-        new optimize.ModuleConcatenationPlugin()
+        })
     ]
 };
 
