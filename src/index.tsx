@@ -8,7 +8,7 @@ import {ConnectedRouter as Router, routerMiddleware} from 'react-router-redux';
 import {applyMiddleware, compose, createStore} from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension/developmentOnly';
 import {persistCombineReducers, persistStore} from 'redux-persist';
-import {PersistGate} from 'redux-persist/es/integration/react';
+import {PersistGate} from 'redux-persist/integration/react';
 import storage from 'redux-persist/es/storage';
 import {PersistConfig} from 'redux-persist/es/types';
 import thunk from 'redux-thunk';
